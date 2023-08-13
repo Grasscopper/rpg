@@ -79,10 +79,10 @@ const EmployeeIndexContainer = (props) => {
               <div className="hero-body">
                 <div className="container has-text-centered">
                   <p className="title">
-                    Title
+                    Goals
                   </p>
                   <p className="subtitle">
-                    Subtitle
+                    Create your goals
                   </p>
                 </div>
               </div>
