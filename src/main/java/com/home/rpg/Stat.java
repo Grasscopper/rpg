@@ -1,7 +1,5 @@
 package com.home.rpg;
 
-import java.util.Objects;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,18 +12,18 @@ public class Stat {
 
 	private @Id @GeneratedValue Long id;
 	private String name;
-	private String req;
+	private String description;
 	private int level;
-	private float value;
+	private float exp;
 	private float goal;
 
 	private Stat() {}
 
-	public Stat(String name, String req, int level, float value, float goal) {
+	public Stat(String name, String description, int level, float exp, float goal) {
 		this.name = name;
-		this.req = req;
+		this.description = description;
 		this.level = level;
-		this.value = value;
+		this.exp = exp;
 		this.goal = goal;
 	}
 
@@ -37,12 +35,12 @@ public class Stat {
 		this.name = name;
 	}
 
-	public String getReq() {
-		return req;
+	public String getdescription() {
+		return description;
 	}
 
-	public void setReq(String req) {
-		this.req = req;
+	public void setdescription(String description) {
+		this.description = description;
 	}
 
 	public int getLevel() {
@@ -53,12 +51,12 @@ public class Stat {
 		this.level = level;
 	}
 
-	public float getValue() {
-		return value;
+	public float getExp() {
+		return exp;
 	}
 
-	public void setValue(float value) {
-		this.value = value;
+	public void setExp(float exp) {
+		this.exp = exp;
 	}
 
 	public float getGoal() {
@@ -74,9 +72,9 @@ public class Stat {
 		return "Employee{" +
 			"id=" + id +
 			", name='" + name + '\'' +
-			", req='" + req + '\'' +
+			", description='" + description + '\'' +
 			", level='" + level + '\'' +
-			", value='" + value + '\'' +
+			", exp='" + exp + '\'' +
 			", goal='" + goal + '\'' +
 			'}';
 	}
