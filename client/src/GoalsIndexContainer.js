@@ -1,12 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import Employee from './Employee'
 
-const EmployeeIndexContainer = (props) => {
-    const [employees, setEmployees] = useState([])
+const GoalsIndexContainer = (props) => {
+    const [stats, setStats] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/employees")
+        fetch("http://localhost:8080/api/stats")
         .then((response) => {
           if (response.ok) {
             return response
@@ -20,26 +19,28 @@ const EmployeeIndexContainer = (props) => {
           return response.json()
         })
         .then((body) => {
-          setEmployees(body)
+          setStats(body)
         })
         .catch((error) => {
-          console.error(`Cannot fetch employees: ${error.message}`)
+          console.error(`Cannot fetch stats: ${error.message}`)
         })
       }, [])
 
-    let employeeTiles = employees.map((e) => {
-        return (
-            <Employee
-            firstName={e.firstName}
-            lastName={e.lastName}
-            description={e.description}
-            />
-        )
+    let statTiles = stats.map((stat) => {
+      return (
+        <div className="notification is-success" style={{ border: "solid", borderWidth: "3px", borderColor: "black" }}>
+          <p className="title">{stat.name}</p>
+          <p className="subtitle">Level {stat.level}</p>
+          <p>{stat.description}</p>
+          <p>EXP: {stat.exp}</p>
+          <p>Goal: {stat.goal}</p>
+        </div>
+      )
     })
 
     return (
         <div>
-            <section className="hero is-success is-large">
+            <section className="hero is-primary is-medium">
               <div className="hero-head">
                 <nav className="navbar">
                   <div className="container">
@@ -53,15 +54,6 @@ const EmployeeIndexContainer = (props) => {
                     </div>
                     <div id="navbarMenuHeroB" className="navbar-menu">
                       <div className="navbar-end">
-                        <a className="navbar-item">
-                          Home
-                        </a>
-                        <a className="navbar-item">
-                          Examples
-                        </a>
-                        <a className="navbar-item">
-                          Documentation
-                        </a>
                         <span className="navbar-item">
                           <a className="button is-info is-inverted">
                             <span className="icon">
@@ -79,10 +71,10 @@ const EmployeeIndexContainer = (props) => {
               <div className="hero-body">
                 <div className="container has-text-centered">
                   <p className="title">
-                    Goals
+                    Stats
                   </p>
                   <p className="subtitle">
-                    Create your goals
+                    Create and increase the RPG stats that represent your life goals
                   </p>
                 </div>
               </div>
@@ -92,34 +84,31 @@ const EmployeeIndexContainer = (props) => {
                   <div className="container">
                     <ul>
                       <li>
-                        <a>Overview</a>
+                        <a>Stats</a>
                       </li>
                       <li>
-                        <a>Modifiers</a>
+                        <a>Enemies</a>
                       </li>
                       <li>
-                        <a>Grid</a>
+                        <a>Inventory</a>
                       </li>
                       <li>
-                        <a>Elements</a>
-                      </li>
-                      <li>
-                        <a>Components</a>
-                      </li>
-                      <li>
-                        <a>Layout</a>
+                        <a>Completed</a>
                       </li>
                     </ul>
                   </div>
                 </nav>
               </div>
-</section>
-<h1>Employees:</h1>
-            <ul>
-                {employeeTiles}
-            </ul>
+            </section>
+
+            <br />
+
+            <div className="container has-text-centered">
+              {statTiles}
+            </div>
+
         </div>
     )
 }
 
-export default EmployeeIndexContainer
+export default GoalsIndexContainer

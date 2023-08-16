@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import EmployeeIndexContainer from './EmployeeIndexContainer';
+import GoalsIndexContainer from './GoalsIndexContainer';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <EmployeeIndexContainer />
+    <GoalsIndexContainer />
   </React.StrictMode>
 );
 
