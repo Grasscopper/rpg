@@ -25,5 +25,12 @@ public class StatLoader implements CommandLineRunner {
             100.00f,
             200.00f
         ));
+		this.repository.save(new Stat(
+            "Intelligence",
+            "Read 20 pages.",
+            1,
+            40.00f,
+            352.00f
+        ));
 	}
 }

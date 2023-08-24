@@ -28,12 +28,15 @@ const GoalsIndexContainer = (props) => {
 
     let statTiles = stats.map((stat) => {
       return (
-        <div className="notification is-success" style={{ border: "solid", borderWidth: "3px", borderColor: "black" }}>
+        <div className="notification" style={{ border: "solid", borderWidth: "2px", borderColor: "black" }}>
           <p className="title">{stat.name}</p>
-          <p className="subtitle">Level {stat.level}</p>
-          <p>{stat.description}</p>
-          <p>EXP: {stat.exp}</p>
-          <p>Goal: {stat.goal}</p>
+          <p className="subtitle">Level {stat.level} - {stat.description}</p>
+          <div className="buttons is-centered">
+            <button className="button is-medium is-primary">Boost</button>
+            <button className="button is-medium is-danger">Lower</button>
+          </div>
+          <p>Progress: {stat.exp}/{stat.goal}</p>
+          <progress className="progress is-primary" value={stat.exp} max={stat.goal} />
         </div>
       )
     })
@@ -71,11 +74,15 @@ const GoalsIndexContainer = (props) => {
               <div className="hero-body">
                 <div className="container has-text-centered">
                   <p className="title">
-                    Stats
+                    Goals
                   </p>
                   <p className="subtitle">
-                    Create and increase the RPG stats that represent your life goals
+                    Complete by September 30, 2023
                   </p>
+                  <ul>
+                    <li><p>Increase bench press to 255 pounds by September 30, 2023</p></li>
+                    <li><p>Read the 352 page "The Vanishing Half" by September 30, 2023</p></li>
+                    </ul>
                 </div>
               </div>
 
@@ -83,17 +90,14 @@ const GoalsIndexContainer = (props) => {
                 <nav className="tabs is-boxed is-fullwidth">
                   <div className="container">
                     <ul>
-                      <li>
+                      <li className="is-active has-text-primary">
                         <a>Stats</a>
                       </li>
                       <li>
                         <a>Enemies</a>
                       </li>
                       <li>
-                        <a>Inventory</a>
-                      </li>
-                      <li>
-                        <a>Completed</a>
+                        <a>Skills</a>
                       </li>
                     </ul>
                   </div>
