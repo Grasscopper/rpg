@@ -23,7 +23,7 @@ public class StatLoader implements CommandLineRunner {
             "Increase bench press by 5 pounds.",
             1,
             100.00f,
-            200.00f
+            255.00f
         ));
 		this.repository.save(new Stat(
             "Intelligence",

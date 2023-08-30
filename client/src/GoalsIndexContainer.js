@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 const GoalsIndexContainer = (props) => {
     const [stats, setStats] = useState([])
+    const [tabs, setTabs] = useState(["is-active has-text-primary", "", ""])
 
     useEffect(() => {
         fetch("http://localhost:8080/api/stats")
@@ -25,6 +26,13 @@ const GoalsIndexContainer = (props) => {
           console.error(`Cannot fetch stats: ${error.message}`)
         })
       }, [])
+
+    const changeTab = (event) => {
+      const activeTab = event.currentTarget.value
+      if (activeTab == 0) setTabs(["is-active has-text-primary", "", ""])
+      else if (activeTab == 1) setTabs(["", "is-active has-text-primary", ""])
+      else if (activeTab == 2) setTabs(["", "", "is-active has-text-primary"])
+    }
 
     let statTiles = stats.map((stat) => {
       return (
@@ -90,20 +98,45 @@ const GoalsIndexContainer = (props) => {
                 <nav className="tabs is-boxed is-fullwidth">
                   <div className="container">
                     <ul>
-                      <li className="is-active has-text-primary">
-                        <a>Stats</a>
-                      </li>
-                      <li>
-                        <a>Enemies</a>
-                      </li>
-                      <li>
-                        <a>Skills</a>
-                      </li>
+                      <li className={tabs[0]} value="0" onClick={changeTab}><a>Stats</a></li>
+                      <li className={tabs[1]} value="1" onClick={changeTab}><a>Enemies</a></li>
+                      <li className={tabs[2]} value="2" onClick={changeTab}><a>Skills</a></li>
                     </ul>
                   </div>
                 </nav>
               </div>
             </section>
+
+            <br />
+
+            <div className="container has-text-centered">
+              <div className="notification is-link">
+              <p className="title">Merciless Knight (Enemy)</p>
+              <p className="subtitle">Define the enemies and bosses as you journey towards your goal</p>
+              <p>
+              <strong>Biography:</strong> Assignment 1: Complete 5 Calculus problems by Friday
+              </p>
+              <p>
+              <strong>Difficulty Level:</strong> 3/5
+              </p>
+              <p>
+              <strong>Move sets (define the obstacles):</strong>
+              </p>
+              <ul>
+                <li>Going to a party on Thursday may stop me if I procrastinate too long</li>
+                <li>Professor is not responsive and I need a bit of help</li>
+                <li>I struggle differentiating trigonometric functions</li>
+              </ul>
+              <p>
+                <strong>Reward:</strong> 3 Intelligence EXP
+              </p>
+         
+              <figure className="image is-128x128">
+              <img src="https://i.pinimg.com/originals/45/36/00/453600095519f35a8d5db1c30177f524.png"/>
+              </figure>
+
+              </div>
+            </div>
 
             <br />
 
