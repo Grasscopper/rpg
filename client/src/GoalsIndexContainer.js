@@ -109,33 +109,46 @@ const GoalsIndexContainer = (props) => {
 
             <br />
 
-            <div className="container has-text-centered">
-              <div className="notification is-link">
-              <p className="title">Merciless Knight (Enemy)</p>
-              <p className="subtitle">Define the enemies and bosses as you journey towards your goal</p>
-              <p>
-              <strong>Biography:</strong> Assignment 1: Complete 5 Calculus problems by Friday
+            <div className="notification has-text-centered has-background-white">
+
+              <p className="title">Defeat the Knight of Death</p>
+              <p className="subtitle"><strong>Difficulty: </strong>
+                <i className="fas fa-star"></i>
+                <i className="fas fa-star"></i>
+                <i className="fas fa-star"></i>
+                <i className="far fa-star"></i>
+                <i className="far fa-star"></i>
               </p>
+              <img src="https://nintendoeverything.com/wp-content/uploads/D7ypHCkU8AEnvKj.jpg"
+              style={{ width: 600, height: 520 }}/>
+
+              <p className="title">Requirements: Complete Calculus Homework by Friday</p>
               <p>
-              <strong>Difficulty Level:</strong> 3/5
-              </p>
-              <p>
-              <strong>Move sets (define the obstacles):</strong>
+              <strong>Obstacles:</strong>
               </p>
               <ul>
-                <li>Going to a party on Thursday may stop me if I procrastinate too long</li>
-                <li>Professor is not responsive and I need a bit of help</li>
-                <li>I struggle differentiating trigonometric functions</li>
+                <li>1. Going to a party on Thursday may hinder my progress</li>
+                <button className="button is-primary" style={{ marginBottom: 10 }}>
+                Use Skill</button>
+                <li>2. Professor is not responsive and the textbook is confusing</li>
+                <button className="button is-primary" style={{ marginBottom: 10 }}>
+                Use Skill</button>
+                <li>3. I struggle differentiating trigonometric functions</li>
+                <button className="button is-primary" style={{ marginBottom: 10 }}>
+                Use Skill</button>
               </ul>
               <p>
-                <strong>Reward:</strong> 3 Intelligence EXP
+                <strong>Rewards:</strong>
               </p>
-         
-              <figure className="image is-128x128">
-              <img src="https://i.pinimg.com/originals/45/36/00/453600095519f35a8d5db1c30177f524.png"/>
-              </figure>
-
-              </div>
+              <ul>
+                <li>
+                  3 <i className="fas fa-book" /> Intelligence EXP
+                </li>
+                <li>
+                  Unlock a <i className="fas fa-dice" /> Game Night with Friends on Friday
+                </li>
+              </ul>
+                
             </div>
 
             <br />
