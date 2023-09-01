@@ -119,6 +119,13 @@ const GoalsIndexContainer = (props) => {
                 <i className="far fa-star"></i>
                 <i className="far fa-star"></i>
               </p>
+              <div className="columns">
+              <div className="column is-4" />
+              <div className="column is-4">
+              <strong>HP</strong><progress className="progress is-danger" value="90" max="100">90%</progress>
+              </div>
+              <div className="column is-4" />
+              </div>
               <img src="https://nintendoeverything.com/wp-content/uploads/D7ypHCkU8AEnvKj.jpg"
               style={{ width: 600, height: 520 }}/>
 
