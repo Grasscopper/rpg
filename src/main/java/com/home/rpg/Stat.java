@@ -17,7 +17,7 @@ public class Stat {
 	private float exp;
 	private float goal;
 
-	private Stat() {}
+	public Stat() {}
 
 	public Stat(String name, String description, int level, float exp, float goal) {
 		this.name = name;
@@ -35,11 +35,11 @@ public class Stat {
 		this.name = name;
 	}
 
-	public String getdescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public void setdescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
