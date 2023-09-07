@@ -49,6 +49,14 @@ const GoalsIndexContainer = (props) => {
       )
     })
 
+    const date = new Date()
+
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
+
+    let currentDate = `${month}/${day}/${year}`
+
     return (
         <div>
             <section className="hero is-primary is-medium">
@@ -82,15 +90,19 @@ const GoalsIndexContainer = (props) => {
               <div className="hero-body">
                 <div className="container has-text-centered">
                   <p className="title">
-                    Goals
+                    Lofi Girl
                   </p>
                   <p className="subtitle">
-                    Complete by September 30, 2023
+                    Aspiring Student
                   </p>
-                  <ul>
-                    <li><p>Increase bench press to 255 pounds by September 30, 2023</p></li>
-                    <li><p>Read the 352 page "The Vanishing Half" by September 30, 2023</p></li>
-                    </ul>
+                  <div className="columns">
+                    <div className="column is-4" />
+                    <div className="column is-4">
+                      <strong>HP: 23/30</strong> (Days Until 9/30/23)
+                      <progress className="progress is-info" value="23" max="30" />
+                    </div>
+                    <div className="column is-4" />
+                  </div>
                 </div>
               </div>
 
@@ -111,7 +123,7 @@ const GoalsIndexContainer = (props) => {
 
             <div className="notification has-text-centered has-background-white">
 
-              <p className="title">Defeat the Knight of Death</p>
+              <p className="title">Death Knight</p>
               <p className="subtitle"><strong>Difficulty: </strong>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
@@ -120,16 +132,27 @@ const GoalsIndexContainer = (props) => {
                 <i className="far fa-star"></i>
               </p>
               <div className="columns">
-              <div className="column is-4" />
-              <div className="column is-4">
-              <strong>HP</strong><progress className="progress is-danger" value="90" max="100">90%</progress>
+                  <div className="column is-4" />
+                  <div className="column is-4">
+                    <strong>HP: 14/20</strong> (Homework Problems Left)
+                    <progress className="progress is-danger" value="14" max="20" />
+                  </div>
+                  <div className="column is-4" />
               </div>
-              <div className="column is-4" />
+                  
+              <div className="columns">
+              <div className="column is-3" />
+              <div className="column is-6">
+              <figure className="image is-5by4">
+                <img src="https://nintendoeverything.com/wp-content/uploads/D7ypHCkU8AEnvKj.jpg" />
+              </figure>
               </div>
-              <img src="https://nintendoeverything.com/wp-content/uploads/D7ypHCkU8AEnvKj.jpg"
-              style={{ width: 600, height: 520 }}/>
+              <div className="column is-3" />
+              </div>
 
-              <p className="title">Requirements: Complete Calculus Homework by Friday</p>
+              <p className="title">
+                Complete 20 Calculus Problems to Finish Homework #1 by 9/30/23
+              </p>
               <p>
               <strong>Obstacles:</strong>
               </p>
@@ -155,15 +178,28 @@ const GoalsIndexContainer = (props) => {
                   Unlock a <i className="fas fa-dice" /> Game Night with Friends on Friday
                 </li>
               </ul>
-                
+            </div>
+
+            <div className="container">
+              <p className="title">Battle Log:</p>
+              <div className="notifcation has-background-light">
+                <ul>
+                  <li>(Include date for each list item) Death Knight swings his scythe and deals 1 damage (1 day closer to due date)</li>
+                  <li>(9/3/23) Death Knight swings his scythe and deals 1 damage (1 day closer to due date)</li>
+                  <li>Death Knight swings his scythe and deals 1 damage (1 day closer to due date)</li>
+                  <li>Death Knight swings his scythe and deals 1 damage (1 day closer to due date)</li>
+                  <li>Lofi Girl attacks Death Knight for 4 damage (4 homework problems completed)</li>
+                  <li>Death Knight used "Fireball" (No more office hours before due date)</li>
+                  <li>Lofi Girl used "Ally Protect" (Schedule a help session with a classmate)</li>
+                  <li>Death Knight swings his scythe and deals 1 damage (1 day closer to due date)</li>
+                  <li>Death Knight swings his scythe and deals 1 damage (1 day closer to due date)</li>
+                  <li>Death Knight swings his scythe and deals 1 damage (1 day closer to due date)</li>
+                  <li>Lofi Girl attacks Death Knight for 2 damage (2 homework problems completed)</li>
+                </ul>
+              </div>
             </div>
 
             <br />
-
-            <div className="container has-text-centered">
-              {statTiles}
-            </div>
-
         </div>
     )
 }
