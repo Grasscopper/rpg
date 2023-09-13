@@ -131,6 +131,9 @@ const GoalsIndexContainer = (props) => {
                 <i className="far fa-star"></i>
                 <i className="far fa-star"></i>
               </p>
+              <p className="title">
+                Complete 20 Calculus Problems to Finish Homework #1 by 9/30/23
+              </p>
               <div className="columns">
                   <div className="column is-4" />
                   <div className="column is-4">
@@ -150,12 +153,85 @@ const GoalsIndexContainer = (props) => {
               <div className="column is-3" />
               </div>
 
-              <p className="title">
-                Complete 20 Calculus Problems to Finish Homework #1 by 9/30/23
-              </p>
               <p>
-              <strong>Obstacles:</strong>
+              <strong>Obstacles (Click which life challenges you are currently facing in relation to this goal):</strong>
               </p>
+              <div className="columns">
+                <div className="column is-3">
+                <div className="card has-background-primary has-text-white">
+  <div className="card-image">
+    <figure className="image is-4by3">
+      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+    </figure>
+  </div>
+  <div className="card-content">
+    <div className="media">
+      <div className="media-content">
+        <p className="title">ACTIVE BATTLE</p>
+        <p className="title is-4">Dark Swordsman</p>
+      </div>
+    </div>
+
+    <div className="content">
+    <p>Going to a party on Thursday may hinder my progress.</p>
+    <button className="button is-danger" style={{ marginBottom: 10 }}>
+              FIGHT</button>
+    <p>Clicking the button will open up a modal of all your life skills. To beat the Dark Swordsman,
+      the urge to spend time having fun at a party instead of homework, look through your skill set.
+      It will be a checklist with 1 or more options able to be selected. If the skill worked, then
+      select WIN. If not, select LOSE. If the battle was won, your skills level up. This way, you 
+      personally know this skill or skills are effective against this enemy (life obstacle)
+    </p>
+    </div>
+  </div>
+</div>
+                </div>
+
+                <div className="column is-3">
+                <div className="card">
+  <div className="card-image">
+    <figure className="image is-4by3">
+      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+    </figure>
+  </div>
+  <div className="card-content">
+    <div className="media">
+      <div className="media-content">
+        <p className="title is-4">Thunderblade Knight</p>
+      </div>
+    </div>
+
+    <div className="content">
+    Professor is not responsive and the textbook is confusing.
+    </div>
+  </div>
+</div>
+                </div>
+
+                <div className="column is-3">
+                <div className="card">
+  <div className="card-image">
+    <figure className="image is-4by3">
+      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+    </figure>
+  </div>
+  <div className="card-content">
+    <div className="media">
+      <div className="media-content">
+        <p className="title is-4">Ice Brigand</p>
+      </div>
+    </div>
+
+    <div className="content">
+    I struggle differentiating trigonometric functions.
+    </div>
+  </div>
+</div>
+                </div>
+
+
+
+              </div>
               <ul>
                 <li>1. Going to a party on Thursday may hinder my progress</li>
                 <button className="button is-primary" style={{ marginBottom: 10 }}>
