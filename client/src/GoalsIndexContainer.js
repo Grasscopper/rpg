@@ -92,19 +92,11 @@ const GoalsIndexContainer = (props) => {
               <div className="hero-body">
                 <div className="container has-text-centered">
                   <p className="title">
-                    Lofi Girl
+                    Shuichi Saihara
                   </p>
                   <p className="subtitle">
-                    Aspiring Student - Status: Good
+                    Status: NORMAL
                   </p>
-                  <div className="columns">
-                    <div className="column is-4" />
-                    <div className="column is-4">
-                      <strong>HP: 23/30</strong> (Days Until 9/30/23)
-                      <progress className="progress is-info" value="23" max="30" />
-                    </div>
-                    <div className="column is-4" />
-                  </div>
                 </div>
               </div>
 
@@ -125,13 +117,7 @@ const GoalsIndexContainer = (props) => {
 
             <div className="columns is-multiline" style={{ margin: 5 }}>
               <EnemiesContainer />
-              <EnemiesContainer />
-              <EnemiesContainer />
               <SkillsContainer />
-              <div className="column is-4">
-              </div>
-              <div className="column is-4">
-              </div>
             </div>
 
             <br />
