@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import EnemiesContainer from './EnemiesContainer'
+import SkillsContainer from './SkillsContainer'
 
 const GoalsIndexContainer = (props) => {
     const [stats, setStats] = useState([])
@@ -59,7 +61,7 @@ const GoalsIndexContainer = (props) => {
 
     return (
         <div>
-            <section className="hero is-primary is-medium">
+            <section className="hero is-primary is-small">
               <div className="hero-head">
                 <nav className="navbar">
                   <div className="container">
@@ -93,7 +95,7 @@ const GoalsIndexContainer = (props) => {
                     Lofi Girl
                   </p>
                   <p className="subtitle">
-                    Aspiring Student
+                    Aspiring Student - Status: Good
                   </p>
                   <div className="columns">
                     <div className="column is-4" />
@@ -110,14 +112,27 @@ const GoalsIndexContainer = (props) => {
                 <nav className="tabs is-boxed is-fullwidth">
                   <div className="container">
                     <ul>
-                      <li className={tabs[0]} value="0" onClick={changeTab}><a>Stats</a></li>
-                      <li className={tabs[1]} value="1" onClick={changeTab}><a>Enemies</a></li>
-                      <li className={tabs[2]} value="2" onClick={changeTab}><a>Skills</a></li>
+                      <li className={tabs[0]} value="0" onClick={changeTab}><a>Enemies</a></li>
+                      <li className={tabs[1]} value="1" onClick={changeTab}><a>Skills</a></li>
+                      <li className={tabs[2]} value="2" onClick={changeTab}><a>Rewards</a></li>
                     </ul>
                   </div>
                 </nav>
               </div>
             </section>
+
+            <br />
+
+            <div className="columns is-multiline" style={{ margin: 5 }}>
+              <EnemiesContainer />
+              <EnemiesContainer />
+              <EnemiesContainer />
+              <SkillsContainer />
+              <div className="column is-4">
+              </div>
+              <div className="column is-4">
+              </div>
+            </div>
 
             <br />
 
