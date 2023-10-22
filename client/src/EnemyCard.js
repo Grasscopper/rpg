@@ -10,33 +10,40 @@ const EnemyCard = (props) => {
     return (
     <div className="column is-3">
         <div className="card">
+            <header className="card-header">
+                <p className="card-header-title">
+                {props.name}
+                </p>
+                <span className="card-header-icon">
+                    <span><strong>ANXIETY</strong></span>
+                    <span className="icon">
+                        <i className="fas fa-ghost"></i>
+                    </span>
+                </span>
+            </header>
+
             <div className="card-image">
                 <figure className="image is-5by4">
                 <img src="https://bulma.io/images/placeholders/640x480.png"
                 alt="Placeholder image" />
                 </figure>
             </div>
+
             <div className="card-content">
-                <div className="media">
-                    <div className="media-content">
-                        <p className="title">{props.name}</p>
-                        <p className="subtitle">Enemy Type: {props.type}</p>
-                        <p><strong>Difficulty: </strong>
-                            <i className={difficulty[0]}></i>
-                            <i className={difficulty[1]}></i>
-                            <i className={difficulty[2]}></i>
-                            <i className={difficulty[3]}></i>
-                            <i className={difficulty[4]}></i>
-                        </p>
-                        <button className="button is-medium is-danger">
-                        FIGHT</button>
+                <p className="title">Gym Anxiety</p>
+                <p className="subtitle"><strong>Difficulty: </strong>
+                    <i className={difficulty[0]}></i>
+                    <i className={difficulty[1]}></i>
+                    <i className={difficulty[2]}></i>
+                    <i className={difficulty[3]}></i>
+                    <i className={difficulty[4]}></i>
+                </p>
+                <div className="columns">
+                    <div className="column is-full">
+                        <button className="button is-fullwidth">FIGHT</button>
                     </div>
                 </div>
-
-                <div className="content">
-                    
-                {props.content}
-                </div>
+                <div className="content">{props.content}</div>
             </div>
         </div>
     </div>
