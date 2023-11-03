@@ -4,8 +4,8 @@ import EnemiesContainer from './EnemiesContainer'
 import SkillsContainer from './SkillsContainer'
 
 const GoalsIndexContainer = (props) => {
-    const [stats, setStats] = useState([])
     const [tabs, setTabs] = useState(["is-active has-text-primary", "", ""])
+    const [stats, setStats] = useState([])
 
     useEffect(() => {
         fetch("http://localhost:8080/api/stats")

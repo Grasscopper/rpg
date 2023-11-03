@@ -13,3 +13,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.fight-button:hover {
+  background-color: #FF3960;
+  color: white;
+}

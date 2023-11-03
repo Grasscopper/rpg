@@ -15,7 +15,7 @@ const EnemyCard = (props) => {
                 {props.name}
                 </p>
                 <span className="card-header-icon">
-                    <span><strong>ANXIETY</strong></span>
+                    <span><strong>{props.type}</strong></span>
                     <span className="icon">
                         <i className="fas fa-ghost"></i>
                     </span>
@@ -30,7 +30,7 @@ const EnemyCard = (props) => {
             </div>
 
             <div className="card-content">
-                <p className="title">Gym Anxiety</p>
+                <p className="title">{props.title}</p>
                 <p className="subtitle"><strong>Difficulty: </strong>
                     <i className={difficulty[0]}></i>
                     <i className={difficulty[1]}></i>
@@ -40,10 +40,12 @@ const EnemyCard = (props) => {
                 </p>
                 <div className="columns">
                     <div className="column is-full">
-                        <button className="button is-fullwidth">FIGHT</button>
+                        <button className="button is-fullwidth fight-button">
+                            <strong>FIGHT</strong>
+                        </button>
                     </div>
                 </div>
-                <div className="content">{props.content}</div>
+                <div className="content">{props.description}</div>
             </div>
         </div>
     </div>

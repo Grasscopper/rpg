@@ -11,18 +11,20 @@ import java.util.HashMap;
 public class Enemy {
 
 	private @Id @GeneratedValue Long id;
-	private String name;
-	private String type;
-	private int difficulty;
-	private String content;
+	private String name; // "rpg enemy" name
+    private String type; // "rpg enemy" type
+    private String title; // "real world" name
+	private int difficulty; // difficulty of real world challenge
+	private String description; // descripton of real world challenge
 
 	public Enemy() {}
 
-    public Enemy(String name, String type, int difficulty, String content) {
+    public Enemy(String name, String type, String title, int difficulty, String description) {
         this.name = name;
         this.type = type;
+        this.title = title;
         this.difficulty = difficulty;
-        this.content = content;
+        this.description = description;
     }
 
 	public String getName() {
@@ -41,6 +43,14 @@ public class Enemy {
         this.type = type;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public int getDifficulty() {
         return difficulty;
     }
@@ -49,12 +59,12 @@ public class Enemy {
         this.difficulty = difficulty;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 	@Override
@@ -63,8 +73,9 @@ public class Enemy {
 			"id=" + id +
 			", name='" + name + '\'' +
 			", type='" + type + '\'' +
+            ", title='" + title + '\'' +
 			", difficulty='" + difficulty + '\'' +
-			", content='" + content + '\'' +
+			", description='" + description + '\'' +
 			'}';
 	}
 }
