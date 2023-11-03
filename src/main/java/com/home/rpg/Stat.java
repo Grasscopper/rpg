@@ -69,7 +69,7 @@ public class Stat {
 
 	@Override
 	public String toString() {
-		return "Employee{" +
+		return "Stat{" +
 			"id=" + id +
 			", name='" + name + '\'' +
 			", description='" + description + '\'' +
