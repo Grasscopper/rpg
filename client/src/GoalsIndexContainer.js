@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import EnemiesContainer from './EnemiesContainer'
 import SkillsContainer from './SkillsContainer'
+import EnemyForm from './EnemyForm'
 
 const GoalsIndexContainer = (props) => {
     const [tabs, setTabs] = useState(["is-active has-text-primary", "", ""])
@@ -61,7 +62,7 @@ const GoalsIndexContainer = (props) => {
 
     return (
         <div>
-            <section className="hero is-primary is-small">
+            <section className="hero is-primary is-medium">
               <div className="hero-head">
                 <nav className="navbar">
                   <div className="container">
@@ -91,12 +92,12 @@ const GoalsIndexContainer = (props) => {
 
               <div className="hero-body">
                 <div className="container has-text-centered">
-                  <p className="title">
-                    Shuichi Saihara
+                  <p className="title is-underlined">
+                    Defeat the Enemies
                   </p>
-                  <p className="subtitle">
-                    Status: NORMAL
-                  </p>
+                  <button className="button is-link">
+                    Create Enemy
+                  </button>
                 </div>
               </div>
 
@@ -116,8 +117,17 @@ const GoalsIndexContainer = (props) => {
             <br />
 
             <div className="columns is-multiline" style={{ margin: 5 }}>
+              <div className="column is-4" />
+              <div className="column is-4">
+                <div className="container has-text-centered">
+                  <button className="button is-fullwidth is-link">
+                    Create Enemy
+                  </button>
+                </div>
+              </div>
+              <EnemyForm />
               <EnemiesContainer />
-              <SkillsContainer />
+              <div className="column is-4" />
             </div>
 
             <br />
