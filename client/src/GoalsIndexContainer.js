@@ -7,6 +7,7 @@ import EnemyForm from './EnemyForm'
 const GoalsIndexContainer = (props) => {
     const [tabs, setTabs] = useState(["is-active has-text-primary", "", ""])
     const [stats, setStats] = useState([])
+    const [enemyForm, setEnemyForm] = useState("not-active")
 
     useEffect(() => {
         fetch("http://localhost:8080/api/stats")
@@ -37,6 +38,15 @@ const GoalsIndexContainer = (props) => {
       else if (activeTab == 2) setTabs(["", "", "is-active has-text-primary"])
     }
 
+    const openEnemyForm = (event) => {
+      if (enemyForm === "not-active") {
+        setEnemyForm("is-active")
+      }
+      else if (enemyForm === "is-active") {
+        setEnemyForm("not-active")
+      }
+    }
+
     let statTiles = stats.map((stat) => {
       return (
         <div className="notification" style={{ border: "solid", borderWidth: "2px", borderColor: "black" }}>
@@ -62,7 +72,7 @@ const GoalsIndexContainer = (props) => {
 
     return (
         <div>
-            <section className="hero is-primary is-medium">
+            <section className="hero is-primary is-small">
               <div className="hero-head">
                 <nav className="navbar">
                   <div className="container">
@@ -92,12 +102,7 @@ const GoalsIndexContainer = (props) => {
 
               <div className="hero-body">
                 <div className="container has-text-centered">
-                  <p className="title is-underlined">
-                    Defeat the Enemies
-                  </p>
-                  <button className="button is-link">
-                    Create Enemy
-                  </button>
+
                 </div>
               </div>
 
@@ -120,14 +125,19 @@ const GoalsIndexContainer = (props) => {
               <div className="column is-4" />
               <div className="column is-4">
                 <div className="container has-text-centered">
-                  <button className="button is-fullwidth is-link">
+                  <button className="button is-fullwidth is-link is-rounded"
+                  onClick={openEnemyForm}>
                     Create Enemy
                   </button>
                 </div>
               </div>
-              <EnemyForm />
+              <div className="column is-4" />
               <EnemiesContainer />
               <div className="column is-4" />
+              <EnemyForm
+                enemyForm={enemyForm}
+                setEnemyForm={setEnemyForm}
+              />
             </div>
 
             <br />

@@ -22,11 +22,26 @@ const EnemyForm = (props) => {
           [event.currentTarget.id]: event.currentTarget.value
         })
       }
+
+      const closeEnemyForm = (event) => {
+        event.preventDefault()
+        props.setEnemyForm("not-active")
+      }
     
       return (
-        <>
-        <div className="column is-offset-4">
-            <div className="field">
+        <div className={`modal ${props.enemyForm}`}>
+            <div className="modal-background"></div>
+            <div className="modal-card">
+                <header className="modal-card-head has-background-primary">
+                    <p className="modal-card-title">
+                        <strong className="has-text-white">Create Enemy</strong>
+                    </p>
+                    <button className="delete" aria-label="close"
+                    onClick={closeEnemyForm}></button>
+                </header>
+                <section className="modal-card-body">
+
+                <div className="field">
                 <label className="label">My Real Life Problem</label>
                 <div className="control">
                     <input id="title" className="input" type="text" placeholder="Afraid of the Gym" />
@@ -50,6 +65,34 @@ const EnemyForm = (props) => {
             </div>
 
             <div className="field">
+                <label className="label">Describe Problem</label>
+                <div className="control">
+                    <textarea className="textarea"
+                    placeholder="I am afraid of all the people at the gym..."></textarea>
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Difficulty of Problem</label>
+                <div className="control">
+                    <input className="input" type="number" min="1" max="2" placeholder="3" />
+                </div>
+            </div>
+
+            <br/>
+            <div className="field has-text-centered">
+                <p className="title is-5">
+                    <span className="icon-text has-text-primary">
+                        <span>My Problem</span>
+                        <span className="icon">
+                            <i className="fas fa-arrow-right"></i>
+                        </span>
+                        <span>RPG Enemy</span>
+                    </span>
+                </p>
+            </div>
+
+            <div className="field">
                 <label className="label">Name of Problem as an RPG Enemy</label>
                 <div className="control">
                     <input className="input" type="text" placeholder="Death Knight" />
@@ -57,60 +100,22 @@ const EnemyForm = (props) => {
             </div>
 
             <div className="field">
-                <label className="label">Difficulty of Enemy</label>
+                <label className="label">Picture of Enemy as a URL</label>
                 <div className="control">
-                    <input className="input" type="text" placeholder="3" />
+                    <input className="input" type="url"
+                    placeholder="https://bulma.io/images/placeholders/1280x960.png" />
                 </div>
             </div>
 
-
-                <div className="field">
-                <label className="label">Username</label>
-                <div className="control has-icons-left has-icons-right">
-                    <input className="input is-success" type="text" placeholder="Text input" value="bulma" />
-                    <span className="icon is-small is-left">
-                    <i className="fas fa-user"></i>
-                    </span>
-                    <span className="icon is-small is-right">
-                    <i className="fas fa-check"></i>
-                    </span>
-                </div>
-                <p className="help is-success">This username is available</p>
-                </div>
-
-                <div className="field">
-                <label className="label">Email</label>
-                <div className="control has-icons-left has-icons-right">
-                    <input className="input is-danger" type="email" placeholder="Email input" value="hello@" />
-                    <span className="icon is-small is-left">
-                    <i className="fas fa-envelope"></i>
-                    </span>
-                    <span className="icon is-small is-right">
-                    <i className="fas fa-exclamation-triangle"></i>
-                    </span>
-                </div>
-                <p className="help is-danger">This email is invalid</p>
-                </div>
-
-
-                <div className="field">
-                <label className="label">Describe Problem</label>
-                <div className="control">
-                    <textarea className="textarea" placeholder="Textarea"></textarea>
-                </div>
-                </div>
-
-                <div className="field is-grouped">
-                <div className="control">
-                    <button className="button is-link">Visualize Problem</button>
-                </div>
-                <div className="control">
-                    <button className="button is-link is-light">Cancel</button>
-                </div>
-                </div>
+                </section>
+                <footer className="modal-card-foot">
+                <button className="button is-link"
+                onClick={closeEnemyForm}>Create Enemy</button>
+                <button className="button"
+                onClick={closeEnemyForm}>Cancel</button>
+                </footer>
+            </div>
         </div>
-        <div className="column is-4" />
-        </>
       )
 }
 

@@ -24,7 +24,7 @@ const EnemyCard = (props) => {
 
             <div className="card-image">
                 <figure className="image is-5by4">
-                <img src="https://bulma.io/images/placeholders/640x480.png"
+                <img src={props.url}
                 alt="Placeholder image" />
                 </figure>
             </div>
