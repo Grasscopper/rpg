@@ -13,15 +13,17 @@ public class Enemy {
 	private @Id @GeneratedValue Long id;
 	private String name; // "rpg enemy" name
     private String type; // "rpg enemy" type
+    private String url; // "rpg enemy" picture
     private String title; // "real world" name
 	private int difficulty; // difficulty of real world challenge
 	private String description; // descripton of real world challenge
 
 	public Enemy() {}
 
-    public Enemy(String name, String type, String title, int difficulty, String description) {
+    public Enemy(String name, String type, String url, String title, int difficulty, String description) {
         this.name = name;
         this.type = type;
+        this.url = url;
         this.title = title;
         this.difficulty = difficulty;
         this.description = description;
@@ -41,6 +43,14 @@ public class Enemy {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getTitle() {

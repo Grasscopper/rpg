@@ -33,6 +33,7 @@ const EnemiesContainer = (props) => {
             <EnemyCard
             name={enemy.name}
             type={enemy.type}
+            url={enemy.url}
             title={enemy.title}
             difficulty={enemy.difficulty}
             description={enemy.description}
