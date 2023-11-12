@@ -1,13 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import EnemiesContainer from './EnemiesContainer'
-import SkillsContainer from './SkillsContainer'
-import EnemyForm from './EnemyForm'
 
 const GoalsIndexContainer = (props) => {
     const [tabs, setTabs] = useState(["is-active has-text-primary", "", ""])
     const [stats, setStats] = useState([])
-    const [enemyForm, setEnemyForm] = useState("not-active")
 
     useEffect(() => {
         fetch("http://localhost:8080/api/stats")
@@ -36,15 +33,6 @@ const GoalsIndexContainer = (props) => {
       if (activeTab == 0) setTabs(["is-active has-text-primary", "", ""])
       else if (activeTab == 1) setTabs(["", "is-active has-text-primary", ""])
       else if (activeTab == 2) setTabs(["", "", "is-active has-text-primary"])
-    }
-
-    const openEnemyForm = (event) => {
-      if (enemyForm === "not-active") {
-        setEnemyForm("is-active")
-      }
-      else if (enemyForm === "is-active") {
-        setEnemyForm("not-active")
-      }
     }
 
     let statTiles = stats.map((stat) => {
@@ -122,22 +110,7 @@ const GoalsIndexContainer = (props) => {
             <br />
 
             <div className="columns is-multiline" style={{ margin: 5 }}>
-              <div className="column is-4" />
-              <div className="column is-4">
-                <div className="container has-text-centered">
-                  <button className="button is-fullwidth is-link is-rounded"
-                  onClick={openEnemyForm}>
-                    Create Enemy
-                  </button>
-                </div>
-              </div>
-              <div className="column is-4" />
               <EnemiesContainer />
-              <div className="column is-4" />
-              <EnemyForm
-                enemyForm={enemyForm}
-                setEnemyForm={setEnemyForm}
-              />
             </div>
 
             <br />
