@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
 
 const EnemyForm = (props) => {
-    // Change into modal
     let [formPayload, setFormPayload] = useState({
         name: "",
-        type: "",
-        title: "",
+        type: "Anxiety",
+        description: "",
         difficulty: 1,
-        description: ""
+        title: "",
+        url: ""
       })
-    
-      const createEnemy = (event) => {
-        event.preventDefault()
-        // props.createNewEnemy(formPayload)
-      }
     
       const update = (event) => {
         event.preventDefault()
@@ -26,6 +21,48 @@ const EnemyForm = (props) => {
       const closeEnemyForm = (event) => {
         event.preventDefault()
         props.setEnemyForm("not-active")
+      }
+
+      const sendEnemyForm = (event) => {
+        event.preventDefault()
+        fetch("http://localhost:8080/api/enemies", {
+            method: "POST",
+            body: JSON.stringify(formPayload),
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            }
+          })
+          .then((response) => {
+            if (response.ok) {
+              return response
+            } else {
+              let errorMessage = `${response.status}: ${response.statusText}`
+              let error = new Error(errorMessage)
+              throw(error)
+            }
+          })
+          .then((response) => {
+            return response.json()
+          })
+          .then((createdEnemy) => {
+            props.setEnemies([
+                ...props.enemies,
+                createdEnemy
+            ])
+          })
+          .catch((error) => {
+            console.error(`Error creating an enemy: ${error.message}`)
+          })
+          props.setEnemyForm("not-active")
+          setFormPayload({
+            name: "",
+            type: "Anxiety",
+            description: "",
+            difficulty: 1,
+            title: "",
+            url: ""
+          })
       }
     
       return (
@@ -44,7 +81,10 @@ const EnemyForm = (props) => {
                 <div className="field">
                 <label className="label">My Real Life Problem</label>
                 <div className="control">
-                    <input id="title" className="input" type="text" placeholder="Afraid of the Gym" />
+                    <input id="name" className="input" type="text" autoComplete="off"
+                    onChange={update}
+                    value={formPayload.name}
+                    placeholder="Afraid of the Gym" />
                 </div>
             </div>
 
@@ -52,7 +92,9 @@ const EnemyForm = (props) => {
                 <label className="label">Category of Problem</label>
                 <div className="control">
                     <div className="select">
-                    <select>
+                    <select id="type"
+                    value={formPayload.type}
+                    onChange={update}>
                         <option>Anxiety</option>
                         <option>Depression</option>
                         <option>Self-Esteem</option>
@@ -67,7 +109,9 @@ const EnemyForm = (props) => {
             <div className="field">
                 <label className="label">Describe Problem</label>
                 <div className="control">
-                    <textarea className="textarea"
+                    <textarea id="description" className="textarea" autoComplete="off"
+                    value={formPayload.description}
+                    onChange={update}
                     placeholder="I am afraid of all the people at the gym..."></textarea>
                 </div>
             </div>
@@ -75,7 +119,10 @@ const EnemyForm = (props) => {
             <div className="field">
                 <label className="label">Difficulty of Problem</label>
                 <div className="control">
-                    <input className="input" type="number" min="1" max="2" placeholder="3" />
+                    <input id="difficulty" className="input" type="number" min="1" max="2"
+                    value={formPayload.difficulty}
+                    onChange={update}
+                    placeholder="1" />
                 </div>
             </div>
 
@@ -95,24 +142,32 @@ const EnemyForm = (props) => {
             <div className="field">
                 <label className="label">Name of Problem as an RPG Enemy</label>
                 <div className="control">
-                    <input className="input" type="text" placeholder="Death Knight" />
+                    <input id="title" className="input" type="text" autoComplete="off"
+                    value={formPayload.title}
+                    onChange={update}
+                    placeholder="Death Knight" />
                 </div>
             </div>
 
             <div className="field">
-                <label className="label">Picture of Enemy as a URL</label>
+                <label className="label">Picture of Enemy from a URL</label>
                 <div className="control">
-                    <input className="input" type="url"
+                    <input id="url" className="input" type="url" autoComplete="off"
+                    value={formPayload.url}
+                    onChange={update}
                     placeholder="https://bulma.io/images/placeholders/1280x960.png" />
                 </div>
             </div>
 
                 </section>
                 <footer className="modal-card-foot">
-                <button className="button is-link"
-                onClick={closeEnemyForm}>Create Enemy</button>
-                <button className="button"
-                onClick={closeEnemyForm}>Cancel</button>
+                    <button className="button is-link"
+                        onClick={sendEnemyForm}>Create Enemy
+                    </button>
+
+                    <button className="button"
+                        onClick={closeEnemyForm}>Close
+                    </button>
                 </footer>
             </div>
         </div>
@@ -120,18 +175,3 @@ const EnemyForm = (props) => {
 }
 
 export default EnemyForm
-
-{/* <form autoComplete="off" onSubmit={createEnemy}>
-<label htmlFor="name">Name</label>
-<input
-id="name"
-name="name"
-type="text"
-className="text-center"
-onChange={update}
-value={formPayload.name}
-/>
-
-
-<button type="submit" value="Submit" id="add-new-game">Add New Game</button>
-</form> */}
