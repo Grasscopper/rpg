@@ -6,18 +6,23 @@ const EnemyCard = (props) => {
     if (props.difficulty > 2) difficulty[2] = "fas fa-star"
     if (props.difficulty > 3) difficulty[3] = "fas fa-star"
     if (props.difficulty > 4) difficulty[4] = "fas fa-star"
+    let enemy = "yard"
+
+    const defend = (event) => {
+        event.preventDefault()
+        console.log(props.name)
+    }
 
     return (
     <div className="column is-3">
-        <div className="card">
+        <div className="card" >
             <header className="card-header">
                 <p className="card-header-title">
                 {props.name}
                 </p>
-                <span className="card-header-icon">
-                    <span><strong>{props.type}</strong></span>
+                <span className="card-header-icon" onClick={defend}>
                     <span className="icon">
-                        <i className="fas fa-ghost"></i>
+                        <i className="fas fa-pen"></i>
                     </span>
                 </span>
             </header>
@@ -25,7 +30,7 @@ const EnemyCard = (props) => {
             <div className="card-image">
                 <figure className="image is-5by4">
                 <img src={props.url}
-                alt="Placeholder image" />
+                alt={`Image is from: ${props.url}`} />
                 </figure>
             </div>
 
