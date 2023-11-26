@@ -60,54 +60,51 @@ const GoalsIndexContainer = (props) => {
 
     return (
         <div>
-            <section className="hero is-primary is-small">
-              <div className="hero-head">
-                <nav className="navbar">
-                  <div className="container">
-                    <div className="navbar-brand">
-                      <p className="title is-2" style={{ marginTop: 12, marginBottom: 12 }}>GoalRPG</p>
-                      <span className="navbar-burger" data-target="navbarMenuHeroB">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </span>
-                    </div>
-                    <div id="navbarMenuHeroB" className="navbar-menu">
-                      <div className="navbar-end">
-                        <span className="navbar-item">
-                          <a className="button is-info is-inverted">
-                            <span className="icon">
-                              <i className="fas fa-user"></i>
-                            </span>
-                            <span>Login</span>
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </nav>
+          <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+            <div className="navbar-brand">
+              <a className="navbar-item" style={{ paddingTop: 0 }}>
+                <p className="title is-2 has-text-white">GoalRPG</p>
+              </a>
+
+              <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+
+            <div id="navbarBasicExample" className="navbar-menu">
+              <div className="navbar-start">
+                <a className="navbar-item">
+                  Enemies
+                </a>
+
+                <a className="navbar-item">
+                  Skills
+                </a>
+
+                <a className="navbar-item">
+                  Rewards
+                </a>
               </div>
 
-              <div className="hero-body">
-                <div className="container has-text-centered">
-
+              <div className="navbar-end">
+                <div className="navbar-item">
+                  <div className="buttons">
+                    <a className="button is-info">
+                      <strong>Sign Up</strong>
+                    </a>
+                    <a className="button is-info is-inverted">
+                      <span className="icon">
+                        <i className="fas fa-user"></i>
+                      </span>
+                      <span>Login</span>
+                    </a>
+                  </div>
                 </div>
               </div>
-
-              <div className="hero-foot">
-                <nav className="tabs is-boxed is-fullwidth">
-                  <div className="container">
-                    <ul>
-                      <li className={tabs[0]} value="0" onClick={changeTab}><a>Enemies</a></li>
-                      <li className={tabs[1]} value="1" onClick={changeTab}><a>Skills</a></li>
-                      <li className={tabs[2]} value="2" onClick={changeTab}><a>Rewards</a></li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-            </section>
-
-            <br />
+            </div>
+          </nav>
 
             <div className="columns is-multiline" style={{ margin: 5 }}>
               <EnemiesContainer />
