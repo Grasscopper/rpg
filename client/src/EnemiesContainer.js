@@ -23,7 +23,6 @@ const EnemiesContainer = (props) => {
             return response.json()
         })
         .then((body) => {
-          debugger
             setEnemies(body)
         })
         .catch((error) => {
