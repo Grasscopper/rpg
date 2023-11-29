@@ -54,29 +54,27 @@ const EnemiesContainer = (props) => {
 
     return (
         <>
-            <div className="column is-5" />
-
-              <div className="column is-2">
-                <div className="container has-text-centered">
-                  <button className="button is-fullwidth is-link is-rounded"
-                  onClick={openEnemyForm}>
-                    Create Enemy
-                  </button>
-                </div>
-              </div>
-
-            <div className="column is-5" />
-
             <div className="column is-full">
-            <div style={{ borderBottom: "solid" }}>
-              <p className="title is-1">
-                Enemies
-              </p>
-              <p className="subtitle">
-                Real Life Problems
-              </p>
+              <div style={{ borderBottom: "solid" }}>
+                <p className="title is-1">
+                  Enemies
+                </p>
+                <p className="subtitle" style={{ paddingBottom: 10 }}>
+                  My Real Life Problems
+                </p>
+                </div>
             </div>
+
+            <div className="column is-2">
+              <div className="container has-text-centered">
+                <button className="create button is-fullwidth is-rounded"
+                onClick={openEnemyForm}>
+                  Create Enemy
+                </button>
+              </div>
             </div>
+
+            <div className="column is-10" />
 
             <EnemyForm
                 enemyForm={enemyForm}

@@ -69,7 +69,7 @@ const EnemyForm = (props) => {
         <div className={`modal ${props.enemyForm}`}>
             <div className="modal-background"></div>
             <div className="modal-card">
-                <header className="modal-card-head has-background-primary">
+                <header className="modal-card-head has-background-info">
                     <p className="modal-card-title">
                         <strong className="has-text-white">Create Enemy</strong>
                     </p>
@@ -129,7 +129,7 @@ const EnemyForm = (props) => {
             <br/>
             <div className="field has-text-centered">
                 <p className="title is-5">
-                    <span className="icon-text has-text-primary">
+                    <span className="icon-text has-text-info">
                         <span>My Problem</span>
                         <span className="icon">
                             <i className="fas fa-arrow-right"></i>
@@ -161,7 +161,7 @@ const EnemyForm = (props) => {
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-link"
+                    <button className="button is-info"
                         onClick={sendEnemyForm}>Create Enemy
                     </button>
 
