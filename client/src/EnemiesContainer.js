@@ -31,17 +31,19 @@ const EnemiesContainer = (props) => {
     }, [])
 
     const openEnemyForm = (event) => {
-        if (enemyForm === "not-active") {
-          setEnemyForm("is-active")
-        }
-        else if (enemyForm === "is-active") {
-          setEnemyForm("not-active")
-        }
+      if (enemyForm === "not-active") {
+        setEnemyForm("is-active")
       }
+      else if (enemyForm === "is-active") {
+        setEnemyForm("not-active")
+      }
+    }
 
     let enemyCards = enemies.map((enemy) => {
         return (
             <EnemyCard
+            key={enemy.id}
+            id={enemy.id}
             name={enemy.name}
             type={enemy.type}
             url={enemy.url}
