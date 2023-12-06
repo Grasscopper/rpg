@@ -31,17 +31,19 @@ const EnemiesContainer = (props) => {
     }, [])
 
     const openEnemyForm = (event) => {
-        if (enemyForm === "not-active") {
-          setEnemyForm("is-active")
-        }
-        else if (enemyForm === "is-active") {
-          setEnemyForm("not-active")
-        }
+      if (enemyForm === "not-active") {
+        setEnemyForm("is-active")
       }
+      else if (enemyForm === "is-active") {
+        setEnemyForm("not-active")
+      }
+    }
 
     let enemyCards = enemies.map((enemy) => {
         return (
             <EnemyCard
+            key={enemy.id}
+            id={enemy.id}
             name={enemy.name}
             type={enemy.type}
             url={enemy.url}
@@ -54,29 +56,30 @@ const EnemiesContainer = (props) => {
 
     return (
         <>
-            <div className="column is-5" />
-
-              <div className="column is-2">
-                <div className="container has-text-centered">
-                  <button className="button is-fullwidth is-link is-rounded"
-                  onClick={openEnemyForm}>
-                    Create Enemy
-                  </button>
+            <div className="column is-4" />
+            <div className="column is-4 has-text-centered">
+              <div>
+                <p className="title is-1">
+                  Enemies
+                </p>
+                <p className="subtitle" style={{ paddingBottom: 10 }}>
+                  My Real Life Problems
+                </p>
                 </div>
-              </div>
+            </div>
+            <div className="column is-4" />
 
             <div className="column is-5" />
+            <div className="column is-2">
+              <div className="container has-text-centered">
+                <button className="create button is-fullwidth is-rounded"
+                onClick={openEnemyForm}>
+                  Create Enemy
+                </button>
+              </div>
+            </div>
 
-            <div className="column is-full">
-            <div style={{ borderBottom: "solid" }}>
-              <p className="title is-1">
-                Enemies
-              </p>
-              <p className="subtitle">
-                Real Life Problems
-              </p>
-            </div>
-            </div>
+            <div className="column is-5" />
 
             <EnemyForm
                 enemyForm={enemyForm}

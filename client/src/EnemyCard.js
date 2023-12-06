@@ -1,26 +1,55 @@
-import React from 'react'
+import React, {useState} from 'react'
+import EnemyEditForm from './EnemyEditForm'
 
 const EnemyCard = (props) => {
+    const [enemy, setEnemy] = useState({
+        id: props.id,
+        name: props.name,
+        type: props.type,
+        description: props.description,
+        difficulty: props.difficulty,
+        title: props.title,
+        url: props.url
+    })
+    const [edit, setEditForm] = useState("not-active")
+
     let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
     if (props.difficulty > 1) difficulty[1] = "fas fa-star"
     if (props.difficulty > 2) difficulty[2] = "fas fa-star"
     if (props.difficulty > 3) difficulty[3] = "fas fa-star"
     if (props.difficulty > 4) difficulty[4] = "fas fa-star"
-    let enemy = "yard"
 
-    const defend = (event) => {
+    const editEnemy = (event) => {
         event.preventDefault()
-        console.log(props.name)
+        if (edit === "not-active") {
+            setEditForm("is-active")
+        }
+        else if (edit === "is-active") {
+            setEditForm("not-active")
+        }
     }
 
     return (
+    <>
+    <EnemyEditForm
+        edit={edit}
+        setEditForm={setEditForm}
+        id={enemy.id}
+        name={enemy.name}
+        type={enemy.type}
+        description={enemy.description}
+        difficulty={enemy.difficulty}
+        title={enemy.title}
+        url={enemy.url}
+        setEnemy={setEnemy}
+    />
     <div className="column is-3">
         <div className="card" >
             <header className="card-header">
                 <p className="card-header-title">
                 {props.name}
                 </p>
-                <span className="card-header-icon" onClick={defend}>
+                <span className="card-header-icon" onClick={editEnemy}>
                     <span className="icon">
                         <i className="fas fa-pen"></i>
                     </span>
@@ -54,6 +83,7 @@ const EnemyCard = (props) => {
             </div>
         </div>
     </div>
+    </>
     )
 }
 

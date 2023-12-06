@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 
-const EnemyForm = (props) => {
+const EnemyEditForm = (props) => {
     let [formPayload, setFormPayload] = useState({
-        name: "",
-        type: "Anxiety",
-        description: "",
-        difficulty: 1,
-        title: "",
-        url: ""
+        id: props.id,
+        name: props.name,
+        type: props.type,
+        description: props.description,
+        difficulty: props.difficulty,
+        title: props.title,
+        url: props.url
       })
     
       const update = (event) => {
@@ -18,22 +19,22 @@ const EnemyForm = (props) => {
         })
       }
 
-      const closeEnemyForm = (event) => {
+      const closeEditForm = (event) => {
         event.preventDefault()
-        props.setEnemyForm("not-active")
+        props.setEditForm("not-active")
       }
 
-      const sendEnemyForm = (event) => {
+      const editEnemy = (event) => {
         event.preventDefault()
-        fetch("http://localhost:8080/api/enemies", {
-            method: "POST",
+        fetch(`http://localhost:8080/api/enemies/${formPayload.id}`, {
+            method: "PUT",
             body: JSON.stringify(formPayload),
             headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json"
+                Accept: "application/json",
+                "Content-Type": "application/json"
             }
-          })
-          .then((response) => {
+        })
+        .then((response) => {
             if (response.ok) {
               return response
             } else {
@@ -45,36 +46,25 @@ const EnemyForm = (props) => {
           .then((response) => {
             return response.json()
           })
-          .then((createdEnemy) => {
-            props.setEnemies([
-                ...props.enemies,
-                createdEnemy
-            ])
+          .then((editedEnemy) => {
+            props.setEnemy(editedEnemy)
+            props.setEditForm("not-active")
           })
           .catch((error) => {
-            console.error(`Error creating an enemy: ${error.message}`)
-          })
-          props.setEnemyForm("not-active")
-          setFormPayload({
-            name: "",
-            type: "Anxiety",
-            description: "",
-            difficulty: 1,
-            title: "",
-            url: ""
+            console.error(`Error editing an enemy: ${error.message}`)
           })
       }
-    
+ 
       return (
-        <div className={`modal ${props.enemyForm}`}>
+        <div className={`modal ${props.edit}`}>
             <div className="modal-background"></div>
             <div className="modal-card">
-                <header className="modal-card-head has-background-info">
+                <header className="modal-card-head has-background-warning">
                     <p className="modal-card-title">
-                        <strong className="has-text-white">Create Enemy</strong>
+                        <strong>Edit Enemy</strong>
                     </p>
                     <button className="delete" aria-label="close"
-                    onClick={closeEnemyForm}></button>
+                    onClick={closeEditForm}></button>
                 </header>
                 <section className="modal-card-body">
 
@@ -83,8 +73,7 @@ const EnemyForm = (props) => {
                 <div className="control">
                     <input id="name" className="input" type="text" autoComplete="off"
                     onChange={update}
-                    value={formPayload.name}
-                    placeholder="Afraid of the Gym" />
+                    value={formPayload.name} />
                 </div>
             </div>
 
@@ -111,8 +100,7 @@ const EnemyForm = (props) => {
                 <div className="control">
                     <textarea id="description" className="textarea" autoComplete="off"
                     value={formPayload.description}
-                    onChange={update}
-                    placeholder="I am afraid of all the people at the gym..."></textarea>
+                    onChange={update} />
                 </div>
             </div>
 
@@ -121,15 +109,14 @@ const EnemyForm = (props) => {
                 <div className="control">
                     <input id="difficulty" className="input" type="number" min="1" max="2"
                     value={formPayload.difficulty}
-                    onChange={update}
-                    placeholder="1" />
+                    onChange={update} />
                 </div>
             </div>
 
             <br/>
             <div className="field has-text-centered">
                 <p className="title is-5">
-                    <span className="icon-text has-text-info">
+                    <span className="icon-text has-text-warning">
                         <span>My Problem</span>
                         <span className="icon">
                             <i className="fas fa-arrow-right"></i>
@@ -144,8 +131,7 @@ const EnemyForm = (props) => {
                 <div className="control">
                     <input id="title" className="input" type="text" autoComplete="off"
                     value={formPayload.title}
-                    onChange={update}
-                    placeholder="Death Knight" />
+                    onChange={update} />
                 </div>
             </div>
 
@@ -154,19 +140,18 @@ const EnemyForm = (props) => {
                 <div className="control">
                     <input id="url" className="input" type="url" autoComplete="off"
                     value={formPayload.url}
-                    onChange={update}
-                    placeholder="https://bulma.io/images/placeholders/1280x960.png" />
+                    onChange={update} />
                 </div>
             </div>
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-info"
-                        onClick={sendEnemyForm}>Create Enemy
+                    <button className="button is-warning"
+                        onClick={editEnemy}>Edit Enemy
                     </button>
 
                     <button className="button"
-                        onClick={closeEnemyForm}>Close
+                        onClick={closeEditForm}>Close
                     </button>
                 </footer>
             </div>
@@ -174,4 +159,4 @@ const EnemyForm = (props) => {
       )
 }
 
-export default EnemyForm
+export default EnemyEditForm

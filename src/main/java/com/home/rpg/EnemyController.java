@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import java.util.LinkedList;
 
@@ -35,4 +36,38 @@ public class EnemyController {
 		repository.save(enemy);
 		return enemy; // Because of @ResponseBody, the Enemy becomes JSON
 	}
+
+	@RequestMapping(value = "/api/enemies/{id}", method = RequestMethod.PUT)
+	@ResponseBody
+	public Enemy editEnemy(@RequestBody Enemy newEnemy, @PathVariable Integer id) {
+		return repository.findById(id.longValue())
+			.map((enemy) -> {
+				enemy.setName(newEnemy.getName());
+        		enemy.setType(newEnemy.getType());
+				enemy.setUrl(newEnemy.getUrl());
+				enemy.setTitle(newEnemy.getTitle());
+				enemy.setDifficulty(newEnemy.getDifficulty());
+				enemy.setDescription(newEnemy.getDescription());
+        		return repository.save(enemy);
+      		})
+      		.orElseGet(() -> { // could not find enemy to edit -- creating new enemy
+				newEnemy.setId(id);
+        		return repository.save(newEnemy);
+      		});
+	}
 }
+
+//  @PutMapping("/employees/{id}")
+//   Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+    
+//     return repository.findById(id)
+//       .map(employee -> {
+//         employee.setName(newEmployee.getName());
+//         employee.setRole(newEmployee.getRole());
+//         return repository.save(employee);
+//       })
+//       .orElseGet(() -> {
+//         newEmployee.setId(id);
+//         return repository.save(newEmployee);
+//       });
+//   }

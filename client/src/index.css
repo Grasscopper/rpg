@@ -18,3 +18,8 @@ code {
   background-color: #04D1B2;
   color: white;
 }
+
+.create:hover {
+  background-color: #3298DC;
+  color: white;
+}
