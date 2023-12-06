@@ -10,7 +10,7 @@ import java.util.HashMap;
 @Entity
 public class Enemy {
 
-	private @Id @GeneratedValue Long id;
+	private @Id @GeneratedValue Integer id;
 	private String name; // "rpg enemy" name
     private String type; // "rpg enemy" type
     private String url; // "rpg enemy" picture
@@ -29,11 +29,11 @@ public class Enemy {
         this.description = description;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
