@@ -2,15 +2,15 @@ import React, {useState} from 'react'
 import EnemyEditForm from './EnemyEditForm'
 
 const EnemyCard = (props) => {
-    const [enemy, setEnemy] = useState({
-        id: props.id,
-        name: props.name,
-        type: props.type,
-        description: props.description,
-        difficulty: props.difficulty,
-        title: props.title,
-        url: props.url
-    })
+    // const [enemy, setEnemy] = useState({
+    //     id: props.id,
+    //     name: props.name,
+    //     type: props.type,
+    //     description: props.description,
+    //     difficulty: props.difficulty,
+    //     title: props.title,
+    //     url: props.url
+    // })
     const [edit, setEditForm] = useState("not-active")
 
     let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
@@ -34,14 +34,15 @@ const EnemyCard = (props) => {
     <EnemyEditForm
         edit={edit}
         setEditForm={setEditForm}
-        id={enemy.id}
-        name={enemy.name}
-        type={enemy.type}
-        description={enemy.description}
-        difficulty={enemy.difficulty}
-        title={enemy.title}
-        url={enemy.url}
-        setEnemy={setEnemy}
+        id={props.id}
+        name={props.name}
+        type={props.type}
+        description={props.description}
+        difficulty={props.difficulty}
+        title={props.title}
+        url={props.url}
+        enemies={props.enemies}
+        setEnemies={props.setEnemies}
     />
     <div className="column is-3">
         <div className="card" >
