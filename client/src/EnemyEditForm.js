@@ -47,7 +47,24 @@ const EnemyEditForm = (props) => {
             return response.json()
           })
           .then((editedEnemy) => {
-            props.setEnemy(editedEnemy)
+            let newEnemies = props.enemies.map((currentEnemy) => {
+                let enemy = currentEnemy
+                if (currentEnemy.id == props.id) { // the enemy to edit
+                    enemy.id = editedEnemy.id
+                    enemy.name = editedEnemy.name
+                    enemy.type = editedEnemy.type
+                    enemy.description = editedEnemy.description
+                    enemy.difficulty = editedEnemy.difficulty
+                    enemy.title = editedEnemy.title
+                    enemy.url = editedEnemy.url
+                }
+
+                return ({
+                    ...currentEnemy,
+                    enemy
+                })
+             })
+            props.setEnemies(newEnemies)
             props.setEditForm("not-active")
           })
           .catch((error) => {
