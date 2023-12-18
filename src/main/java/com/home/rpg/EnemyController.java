@@ -43,7 +43,6 @@ public class EnemyController {
 		return repository.findById(id.longValue())
 			.map((enemy) -> {
 				enemy.setName(newEnemy.getName());
-        		enemy.setType(newEnemy.getType());
 				enemy.setUrl(newEnemy.getUrl());
 				enemy.setTitle(newEnemy.getTitle());
 				enemy.setDifficulty(newEnemy.getDifficulty());

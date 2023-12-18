@@ -2,15 +2,6 @@ import React, {useState} from 'react'
 import EnemyEditForm from './EnemyEditForm'
 
 const EnemyCard = (props) => {
-    // const [enemy, setEnemy] = useState({
-    //     id: props.id,
-    //     name: props.name,
-    //     type: props.type,
-    //     description: props.description,
-    //     difficulty: props.difficulty,
-    //     title: props.title,
-    //     url: props.url
-    // })
     const [edit, setEditForm] = useState("not-active")
 
     let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
@@ -36,7 +27,6 @@ const EnemyCard = (props) => {
         setEditForm={setEditForm}
         id={props.id}
         name={props.name}
-        type={props.type}
         description={props.description}
         difficulty={props.difficulty}
         title={props.title}

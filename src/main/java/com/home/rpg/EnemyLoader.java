@@ -20,11 +20,10 @@ public class EnemyLoader implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
         this.repository.save(new Enemy(
             "The Winter Season",
-            "Anxiety",
             "https://nintendoeverything.com/wp-content/uploads/D7ypHCkU8AEnvKj.jpg",
             "Death Knight",
             2,
-            "During the winter, I am scared of the nights. The sun sets early, there is traffic, and it is very cold. To me, this makes me afraid and scared of my environment..."
+            "During the winter, I have increased anxiety and sadness. The sun sets early, there is more traffic from the holidays, and it is very cold. To me, this makes me afraid and scared of my environment..."
         ));
 	}
 }

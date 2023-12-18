@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const EnemyForm = (props) => {
     let [formPayload, setFormPayload] = useState({
         name: "",
-        type: "Anxiety", // unused variable
         description: "",
         difficulty: 1,
         title: "",

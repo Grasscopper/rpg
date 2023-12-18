@@ -4,7 +4,6 @@ const EnemyEditForm = (props) => {
     let [formPayload, setFormPayload] = useState({
         id: props.id,
         name: props.name,
-        type: props.type, // unused
         description: props.description,
         difficulty: props.difficulty,
         title: props.title,
