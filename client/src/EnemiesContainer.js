@@ -74,7 +74,7 @@ const EnemiesContainer = (props) => {
             <div className="column is-5" />
             <div className="column is-2">
               <div className="container has-text-centered">
-                <button className="create button is-fullwidth is-rounded"
+                <button className="create button is-fullwidth has-text-weight-bold"
                 onClick={openEnemyForm}>
                   Create Enemy
                 </button>

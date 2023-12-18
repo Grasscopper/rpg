@@ -180,8 +180,8 @@ const EnemyEditForm = (props) => {
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-warning"
-                        onClick={editEnemy}>Edit Enemy
+                    <button className="button is-warning has-text-weight-bold"
+                        onClick={editEnemy}>EDIT
                     </button>
 
                     <button className="button"

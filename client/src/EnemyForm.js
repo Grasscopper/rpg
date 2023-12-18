@@ -110,7 +110,7 @@ const EnemyForm = (props) => {
         <div className={`modal ${props.enemyForm}`}>
             <div className="modal-background"></div>
             <div className="modal-card">
-                <header className="modal-card-head has-background-info">
+                <header className="modal-card-head has-background-primary">
                     <p className="modal-card-title">
                         <strong className="has-text-white">Create Enemy</strong>
                     </p>
@@ -177,8 +177,8 @@ const EnemyForm = (props) => {
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-info"
-                        onClick={sendEnemyForm}>Create Enemy
+                    <button className="button is-primary has-text-weight-bold"
+                        onClick={sendEnemyForm}>CREATE
                     </button>
 
                     <button className="button"
