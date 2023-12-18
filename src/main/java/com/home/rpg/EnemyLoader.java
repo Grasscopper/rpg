@@ -19,7 +19,7 @@ public class EnemyLoader implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
         this.repository.save(new Enemy(
-            "Winter Nights",
+            "The Winter Season",
             "Anxiety",
             "https://nintendoeverything.com/wp-content/uploads/D7ypHCkU8AEnvKj.jpg",
             "Death Knight",

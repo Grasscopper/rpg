@@ -4,12 +4,44 @@ const EnemyEditForm = (props) => {
     let [formPayload, setFormPayload] = useState({
         id: props.id,
         name: props.name,
-        type: props.type,
+        type: props.type, // unused
         description: props.description,
         difficulty: props.difficulty,
         title: props.title,
         url: props.url
       })
+    let [previous, setPrevious] = useState(props.difficulty)
+
+    let stars = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
+    if (formPayload.difficulty > 1) stars[1] = "fas fa-star"
+    if (formPayload.difficulty > 2) stars[2] = "fas fa-star"
+    if (formPayload.difficulty > 3) stars[3] = "fas fa-star"
+    if (formPayload.difficulty > 4) stars[4] = "fas fa-star"
+
+    const colorStars = (event) => {
+      event.preventDefault()
+      setFormPayload({
+        ...formPayload,
+        difficulty: event.currentTarget.id
+      })
+    }
+    
+    const resetStars = (event) => {
+      event.preventDefault()
+      setFormPayload({
+        ...formPayload,
+        difficulty: previous
+      })
+    }
+
+    const setDifficulty = (event) => {
+      event.preventDefault()
+      setFormPayload({
+        ...formPayload,
+        difficulty: event.currentTarget.id
+      })
+      setPrevious(event.currentTarget.id)
+    }
     
       const update = (event) => {
         event.preventDefault()
@@ -71,6 +103,16 @@ const EnemyEditForm = (props) => {
             console.error(`Error editing an enemy: ${error.message}`)
           })
       }
+
+      const difficultyStars = [1,2,3,4,5].map((difficulty) => {
+        return (
+          <i key={difficulty} id={difficulty}
+            className={stars[difficulty-1]}
+            onClick={setDifficulty}
+            onMouseEnter={colorStars}
+            onMouseLeave={resetStars} />
+        )
+      })
  
       return (
         <div className={`modal ${props.edit}`}>
@@ -95,24 +137,6 @@ const EnemyEditForm = (props) => {
             </div>
 
             <div className="field">
-                <label className="label">Category of Problem</label>
-                <div className="control">
-                    <div className="select">
-                    <select id="type"
-                    value={formPayload.type}
-                    onChange={update}>
-                        <option>Anxiety</option>
-                        <option>Depression</option>
-                        <option>Self-Esteem</option>
-                        <option>Friendship</option>
-                        <option>Work</option>
-                        <option>Health</option>
-                    </select>
-                    </div>
-                </div>
-            </div>
-
-            <div className="field">
                 <label className="label">Describe Problem</label>
                 <div className="control">
                     <textarea id="description" className="textarea" autoComplete="off"
@@ -121,19 +145,13 @@ const EnemyEditForm = (props) => {
                 </div>
             </div>
 
-            <div className="field">
-                <label className="label">Difficulty of Problem</label>
-                <div className="control">
-                    <input id="difficulty" className="input" type="number" min="1" max="2"
-                    value={formPayload.difficulty}
-                    onChange={update} />
-                </div>
-            </div>
+            <label className="label" style={{ marginBottom: 0 }}>Difficulty of Problem</label>
+            <p className="subtitle">{difficultyStars}</p>
 
             <br/>
             <div className="field has-text-centered">
                 <p className="title is-5">
-                    <span className="icon-text has-text-warning">
+                    <span className="icon-text has-text-weight-bold">
                         <span>My Problem</span>
                         <span className="icon">
                             <i className="fas fa-arrow-right"></i>

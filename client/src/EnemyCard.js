@@ -58,9 +58,9 @@ const EnemyCard = (props) => {
             </header>
 
             <div className="card-image">
-                <figure className="image is-5by4">
+                <figure className="image">
                 <img src={props.url}
-                alt={`Image is from: ${props.url}`} />
+                alt={`Image: ${props.url}`} />
                 </figure>
             </div>
 
