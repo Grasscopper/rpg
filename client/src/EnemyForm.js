@@ -125,7 +125,7 @@ const EnemyForm = (props) => {
                     <input id="name" className="input" type="text" autoComplete="off"
                     onChange={update}
                     value={formPayload.name}
-                    placeholder="Afraid of the Gym" />
+                    placeholder="Heavy School Workload" />
                 </div>
             </div>
 
@@ -135,7 +135,7 @@ const EnemyForm = (props) => {
                     <textarea id="description" className="textarea" autoComplete="off"
                     value={formPayload.description}
                     onChange={update}
-                    placeholder="I am afraid of all the people at the gym..."></textarea>
+                    placeholder="I am overwhelmed from all my school work... I have too little time for friends or my hobbies."></textarea>
                 </div>
             </div>
 
@@ -161,7 +161,7 @@ const EnemyForm = (props) => {
                     <input id="title" className="input" type="text" autoComplete="off"
                     value={formPayload.title}
                     onChange={update}
-                    placeholder="Death Knight" />
+                    placeholder="Vengeful Mage" />
                 </div>
             </div>
 
