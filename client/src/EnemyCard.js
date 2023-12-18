@@ -2,15 +2,6 @@ import React, {useState} from 'react'
 import EnemyEditForm from './EnemyEditForm'
 
 const EnemyCard = (props) => {
-    // const [enemy, setEnemy] = useState({
-    //     id: props.id,
-    //     name: props.name,
-    //     type: props.type,
-    //     description: props.description,
-    //     difficulty: props.difficulty,
-    //     title: props.title,
-    //     url: props.url
-    // })
     const [edit, setEditForm] = useState("not-active")
 
     let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
@@ -36,7 +27,6 @@ const EnemyCard = (props) => {
         setEditForm={setEditForm}
         id={props.id}
         name={props.name}
-        type={props.type}
         description={props.description}
         difficulty={props.difficulty}
         title={props.title}
@@ -58,9 +48,9 @@ const EnemyCard = (props) => {
             </header>
 
             <div className="card-image">
-                <figure className="image is-5by4">
+                <figure className="image">
                 <img src={props.url}
-                alt={`Image is from: ${props.url}`} />
+                alt={`Image: ${props.url}`} />
                 </figure>
             </div>
 

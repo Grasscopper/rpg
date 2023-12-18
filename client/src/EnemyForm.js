@@ -3,12 +3,43 @@ import React, { useState } from 'react'
 const EnemyForm = (props) => {
     let [formPayload, setFormPayload] = useState({
         name: "",
-        type: "Anxiety",
         description: "",
         difficulty: 1,
         title: "",
         url: ""
       })
+    let [previous, setPrevious] = useState(1)
+
+      let stars = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
+      if (formPayload.difficulty > 1) stars[1] = "fas fa-star"
+      if (formPayload.difficulty > 2) stars[2] = "fas fa-star"
+      if (formPayload.difficulty > 3) stars[3] = "fas fa-star"
+      if (formPayload.difficulty > 4) stars[4] = "fas fa-star"
+
+      const colorStars = (event) => {
+        event.preventDefault()
+        setFormPayload({
+          ...formPayload,
+          difficulty: event.currentTarget.id
+        })
+      }
+      
+      const resetStars = (event) => {
+        event.preventDefault()
+        setFormPayload({
+          ...formPayload,
+          difficulty: previous
+        })
+      }
+
+      const setDifficulty = (event) => {
+        event.preventDefault()
+        setFormPayload({
+          ...formPayload,
+          difficulty: event.currentTarget.id
+        })
+        setPrevious(event.currentTarget.id)
+      }
     
       const update = (event) => {
         event.preventDefault()
@@ -64,12 +95,22 @@ const EnemyForm = (props) => {
             url: ""
           })
       }
+
+      const difficultyStars = [1,2,3,4,5].map((difficulty) => {
+        return (
+          <i key={difficulty} id={difficulty}
+            className={stars[difficulty-1]}
+            onClick={setDifficulty}
+            onMouseEnter={colorStars}
+            onMouseLeave={resetStars} />
+        )
+      })
     
       return (
         <div className={`modal ${props.enemyForm}`}>
             <div className="modal-background"></div>
             <div className="modal-card">
-                <header className="modal-card-head has-background-info">
+                <header className="modal-card-head has-background-primary">
                     <p className="modal-card-title">
                         <strong className="has-text-white">Create Enemy</strong>
                     </p>
@@ -84,25 +125,7 @@ const EnemyForm = (props) => {
                     <input id="name" className="input" type="text" autoComplete="off"
                     onChange={update}
                     value={formPayload.name}
-                    placeholder="Afraid of the Gym" />
-                </div>
-            </div>
-
-            <div className="field">
-                <label className="label">Category of Problem</label>
-                <div className="control">
-                    <div className="select">
-                    <select id="type"
-                    value={formPayload.type}
-                    onChange={update}>
-                        <option>Anxiety</option>
-                        <option>Depression</option>
-                        <option>Self-Esteem</option>
-                        <option>Friendship</option>
-                        <option>Work</option>
-                        <option>Health</option>
-                    </select>
-                    </div>
+                    placeholder="Heavy School Workload" />
                 </div>
             </div>
 
@@ -112,24 +135,17 @@ const EnemyForm = (props) => {
                     <textarea id="description" className="textarea" autoComplete="off"
                     value={formPayload.description}
                     onChange={update}
-                    placeholder="I am afraid of all the people at the gym..."></textarea>
+                    placeholder="I am overwhelmed from all my school work... I have too little time for friends or my hobbies."></textarea>
                 </div>
             </div>
 
-            <div className="field">
-                <label className="label">Difficulty of Problem</label>
-                <div className="control">
-                    <input id="difficulty" className="input" type="number" min="1" max="2"
-                    value={formPayload.difficulty}
-                    onChange={update}
-                    placeholder="1" />
-                </div>
-            </div>
+            <label className="label" style={{ marginBottom: 0 }}>Difficulty of Problem</label>
+            <p className="subtitle">{difficultyStars}</p>
 
             <br/>
             <div className="field has-text-centered">
                 <p className="title is-5">
-                    <span className="icon-text has-text-info">
+                    <span className="icon-text has-text-weight-bold">
                         <span>My Problem</span>
                         <span className="icon">
                             <i className="fas fa-arrow-right"></i>
@@ -145,7 +161,7 @@ const EnemyForm = (props) => {
                     <input id="title" className="input" type="text" autoComplete="off"
                     value={formPayload.title}
                     onChange={update}
-                    placeholder="Death Knight" />
+                    placeholder="Vengeful Mage" />
                 </div>
             </div>
 
@@ -161,8 +177,8 @@ const EnemyForm = (props) => {
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-info"
-                        onClick={sendEnemyForm}>Create Enemy
+                    <button className="button is-primary has-text-weight-bold"
+                        onClick={sendEnemyForm}>CREATE
                     </button>
 
                     <button className="button"

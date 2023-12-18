@@ -19,8 +19,14 @@ code {
   color: white;
 }
 
+/* the pencil 'edit' icon */
+.card-header-icon:hover { 
+  color: white;
+  background-color: #FFDD57;
+}
+
 .create:hover {
-  background-color: #3298DC;
+  background-color: #04D1B2;
   color: white;
 }
 
