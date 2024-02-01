@@ -1,10 +1,19 @@
-# Getting Started with Create React App
+# How to Run Application
+
+Run the commands for the Spring Backend and React Frontend on two different command line tabs
+
+## Spring Backend
+
+$ cd rpg
+$ mvn spring-boot:run
+
+# React Frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the client directory, you can run:
 
 ### `npm start`
 
