@@ -103,6 +103,41 @@ const EnemyEditForm = (props) => {
           })
       }
 
+      const deleteEnemy = (event) => {
+        event.preventDefault()
+        fetch(`http://localhost:8080/api/enemies/${formPayload.id}`, {
+            method: "DELETE"
+        })
+        .then((response) => {
+            if (response.ok) {
+              return response
+            } else {
+              let errorMessage = `${response.status}: ${response.statusText}`
+              let error = new Error(errorMessage)
+              throw(error)
+            }
+          })
+        .then((response) => {
+        //   let enemies = props.enemies
+        //   let newEnemies = enemies.slice(0, enemies.length - 1).map((currentEnemy) => {
+        //     let enemy = currentEnemy
+        //     if (currentEnemy.id == props.id) { // the enemy to delete
+        //       return
+        //     }
+
+        //     return ({
+        //         ...currentEnemy,
+        //         enemy
+        //     })
+        //  })
+        //   props.setEnemies(newEnemies)
+          props.setEditForm("not-active")
+        })
+        .catch((error) => {
+          console.error(`Error deleting an enemy: ${error.message}`)
+        })
+      }
+
       const difficultyStars = [1,2,3,4,5].map((difficulty) => {
         return (
           <i key={difficulty} id={difficulty}
@@ -121,8 +156,9 @@ const EnemyEditForm = (props) => {
                     <p className="modal-card-title">
                         <strong>Edit Enemy</strong>
                     </p>
-                    <button className="delete" aria-label="close"
-                    onClick={closeEditForm}></button>
+                    <button className="button is-danger is-small is-rounded has-text-weight-bold"
+                        onClick={deleteEnemy}>DELETE
+                    </button>
                 </header>
                 <section className="modal-card-body">
 
@@ -183,7 +219,6 @@ const EnemyEditForm = (props) => {
                     <button className="button is-warning has-text-weight-bold"
                         onClick={editEnemy}>EDIT
                     </button>
-
                     <button className="button"
                         onClick={closeEditForm}>Close
                     </button>

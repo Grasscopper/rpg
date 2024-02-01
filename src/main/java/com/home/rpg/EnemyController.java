@@ -54,6 +54,12 @@ public class EnemyController {
         		return repository.save(newEnemy);
       		});
 	}
+
+	@RequestMapping(value = "/api/enemies/{id}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public void deleteEnemy(@PathVariable Integer id) {
+		repository.deleteById(id.longValue());
+	}
 }
 
 //  @PutMapping("/employees/{id}")

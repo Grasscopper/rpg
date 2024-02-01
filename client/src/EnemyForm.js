@@ -114,8 +114,6 @@ const EnemyForm = (props) => {
                     <p className="modal-card-title">
                         <strong className="has-text-white">Create Enemy</strong>
                     </p>
-                    <button className="delete" aria-label="close"
-                    onClick={closeEnemyForm}></button>
                 </header>
                 <section className="modal-card-body">
 
