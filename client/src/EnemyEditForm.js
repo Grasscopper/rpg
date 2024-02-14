@@ -118,19 +118,8 @@ const EnemyEditForm = (props) => {
             }
           })
         .then((response) => {
-        //   let enemies = props.enemies
-        //   let newEnemies = enemies.slice(0, enemies.length - 1).map((currentEnemy) => {
-        //     let enemy = currentEnemy
-        //     if (currentEnemy.id == props.id) { // the enemy to delete
-        //       return
-        //     }
-
-        //     return ({
-        //         ...currentEnemy,
-        //         enemy
-        //     })
-        //  })
-        //   props.setEnemies(newEnemies)
+          let newEnemies = props.enemies.filter((enemy) => formPayload.id != enemy.id);
+          props.setEnemies(newEnemies)
           props.setEditForm("not-active")
         })
         .catch((error) => {

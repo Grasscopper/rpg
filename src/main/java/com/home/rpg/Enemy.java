@@ -3,6 +3,7 @@ package com.home.rpg;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -15,6 +16,9 @@ public class Enemy {
     private String url; // "rpg enemy" picture
     private String title; // "real world" name
 	private int difficulty; // difficulty of real world challenge
+
+    // https://jakarta.ee/specifications/persistence/2.2/apidocs/javax/persistence/column
+    @Column(length=8160)
 	private String description; // descripton of real world challenge
 
 	public Enemy() {}
