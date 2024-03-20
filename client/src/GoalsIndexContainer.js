@@ -80,7 +80,7 @@ const GoalsIndexContainer = (props) => {
                 </a>
 
                 <a className="navbar-item">
-                  Skills
+                  Abilities
                 </a>
 
                 <a className="navbar-item">
