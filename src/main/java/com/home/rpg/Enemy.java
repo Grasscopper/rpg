@@ -19,7 +19,7 @@ public class Enemy {
 
     // https://jakarta.ee/specifications/persistence/2.2/apidocs/javax/persistence/column
     @Column(length=8160)
-	private String description; // descripton of real world challenge
+	private String description; // description of real world challenge
 
 	public Enemy() {}
 
