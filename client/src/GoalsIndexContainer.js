@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import EnemiesContainer from './EnemiesContainer'
+import AbilitiesContainer from './AbilitiesContainer'
 
 const GoalsIndexContainer = (props) => {
     const [tabs, setTabs] = useState(["is-active has-text-primary", "", ""])
@@ -107,6 +108,7 @@ const GoalsIndexContainer = (props) => {
           </nav>
 
             <div className="columns is-multiline" style={{ margin: 5 }}>
+              <AbilitiesContainer />
               <EnemiesContainer />
             </div>
 
