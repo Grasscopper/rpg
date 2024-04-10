@@ -14,6 +14,7 @@ public class Ability {
     private String realName; // "real world" ability name
     private String abilityName; // "rpg" ability name
     private String url; // picture of ability
+    private int strength; // how strong this Ability is against an Enemy
 
     // https://jakarta.ee/specifications/persistence/2.2/apidocs/javax/persistence/column
     @Column(length=8160)
@@ -21,11 +22,20 @@ public class Ability {
 
     public Ability() {}
 
-    public Ability(String realName, String abilityName, String url, String description) {
+    public Ability(String realName, String abilityName, String url, int strength, String description) {
         this.realName = realName;
         this.abilityName = abilityName;
         this.url = url;
+        this.strength = strength;
         this.description = description;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getRealName() {
@@ -50,6 +60,14 @@ public class Ability {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 
     public String getDescription() {
