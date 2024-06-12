@@ -109,7 +109,7 @@ const AbilityForm = (props) => {
         <div className={`modal ${props.abilityForm}`}>
             <div className="modal-background"></div>
             <div className="modal-card">
-                <header className="modal-card-head has-background-primary">
+                <header className="modal-card-head" style={{ backgroundColor: "#66D1FF"}}>
                     <p className="modal-card-title">
                         <strong className="has-text-white">Create Ability</strong>
                     </p>
@@ -174,7 +174,7 @@ const AbilityForm = (props) => {
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-primary has-text-weight-bold"
+                    <button className="button has-text-weight-bold has-text-white" style={{ backgroundColor: "#66D1FF", border: "none"}}
                         onClick={sendAbilityForm}>CREATE
                     </button>
 
