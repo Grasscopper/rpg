@@ -19,17 +19,27 @@ code {
   color: white;
 }
 
+.card-expansion:hover {
+  .card-image {
+    opacity: 0.80;
+  }
+  background-color: #EBFFFC;
+}
+
 /* the pencil 'edit' icon */
 .card-header-icon:hover { 
-  color: white;
+  color: black;
   background-color: #FFDD57;
 }
 
 .create:hover {
-  background-color: #04D1B2;
+  background-color: #66D1FF;
   color: white;
+  border: solid;
+  border-color: black;
 }
 
 .button {
   box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+  border: solid;
 }

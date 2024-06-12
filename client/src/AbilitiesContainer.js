@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import AbilityForm from './AbilityForm'
 import AbilityCard from './AbilityCard'
+import AbilityCardMinimal from './AbilityCardMinimal'
 
 const AbilitiesContainer = (props) => {
     const [abilities, setAbilities] = useState([])
@@ -39,20 +40,36 @@ const AbilitiesContainer = (props) => {
       }
     }
 
-    let abilityCards = abilities.map((Ability) => {
+    let abilityCards = abilities.map((ability) => {
         return (
             <AbilityCard
-            key={Ability.id}
-            id={Ability.id}
-            realName={Ability.realName}
-            abilityName={Ability.abilityName}
-            url={Ability.url}
-            strength={Ability.strength}
-            description={Ability.description}
+            key={ability.id}
+            id={ability.id}
+            realName={ability.realName}
+            abilityName={ability.abilityName}
+            url={ability.url}
+            strength={ability.strength}
+            description={ability.description}
             abilities={abilities}
             setAbilities={setAbilities}
             />
         )
+    })
+
+    let abilityCardsMinimal = abilities.map((ability) => {
+      return (
+        <AbilityCardMinimal
+        key={ability.id}
+        id={ability.id}
+        realName={ability.realName}
+        abilityName={ability.abilityName}
+        url={ability.url}
+        strength={ability.strength}
+        description={ability.description}
+        abilities={abilities}
+        setAbilities={setAbilities}
+        />
+      )
     })
 
     return (
@@ -63,9 +80,7 @@ const AbilitiesContainer = (props) => {
                 <p className="title is-1">
                   Abilities
                 </p>
-                <p className="subtitle" style={{ paddingBottom: 10 }}>
-                  My Real Life Skills
-                </p>
+  
                 </div>
             </div>
             <div className="column is-4" />
@@ -73,7 +88,7 @@ const AbilitiesContainer = (props) => {
             <div className="column is-5" />
             <div className="column is-2">
               <div className="container has-text-centered">
-                <button className="create button is-fullwidth has-text-weight-bold"
+                <button className="create button is-medium is-fullwidth has-text-weight-bold"
                 onClick={openAbilityForm}>
                   Create Ability
                 </button>

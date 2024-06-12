@@ -204,7 +204,7 @@ const AbilityEditForm = (props) => {
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-warning has-text-weight-bold"
+                    <button className="button is-warning has-text-weight-bold" style={{ border: "solid"}}
                         onClick={editAbility}>EDIT
                     </button>
                     <button className="button"

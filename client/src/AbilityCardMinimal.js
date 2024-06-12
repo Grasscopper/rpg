@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
-import EnemyEditForm from './EnemyEditForm'
+import AbilityEditForm from './AbilityEditForm'
 
-const EnemyCard = (props) => {
+const AbilityCardMinimal = (props) => {
     const [edit, setEditForm] = useState("not-active")
 
-    let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
-    if (props.difficulty > 1) difficulty[1] = "fas fa-star"
-    if (props.difficulty > 2) difficulty[2] = "fas fa-star"
-    if (props.difficulty > 3) difficulty[3] = "fas fa-star"
-    if (props.difficulty > 4) difficulty[4] = "fas fa-star"
+    let strength = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
+    if (props.strength > 1) strength[1] = "fas fa-star"
+    if (props.strength > 2) strength[2] = "fas fa-star"
+    if (props.strength > 3) strength[3] = "fas fa-star"
+    if (props.strength > 4) strength[4] = "fas fa-star"
 
-    const editEnemy = (event) => {
+    const editAbility = (event) => {
         event.preventDefault()
         if (edit === "not-active") {
             setEditForm("is-active")
@@ -22,25 +22,25 @@ const EnemyCard = (props) => {
 
     return (
     <>
-    <EnemyEditForm
+    <AbilityEditForm
         edit={edit}
         setEditForm={setEditForm}
         id={props.id}
-        name={props.name}
-        description={props.description}
-        difficulty={props.difficulty}
-        title={props.title}
+        realName={props.realName}
+        abilityName={props.abilityName}
         url={props.url}
-        enemies={props.enemies}
-        setEnemies={props.setEnemies}
+        strength={props.strength}
+        description={props.description}
+        abilities={props.abilities}
+        setAbilities={props.setAbilities}
     />
     <div className="column is-3">
         <div className="card" >
             <header className="card-header has-background-primary has-text-white">
                 <p className="card-header-title has-text-white">
-                {props.name}
+                {props.realName}
                 </p>
-                <span className="card-header-icon" onClick={editEnemy}>
+                <span className="card-header-icon" onClick={editAbility}>
                     <span className="icon">
                         <i className="fas fa-pen"></i>
                     </span>
@@ -55,18 +55,18 @@ const EnemyCard = (props) => {
             </div>
 
             <div className="card-content">
-                <p className="title">{props.title}</p>
-                <p className="subtitle"><strong>Difficulty: </strong>
-                    <i className={difficulty[0]}></i>
-                    <i className={difficulty[1]}></i>
-                    <i className={difficulty[2]}></i>
-                    <i className={difficulty[3]}></i>
-                    <i className={difficulty[4]}></i>
+                <p className="title">{props.abilityName}</p>
+                <p className="subtitle"><strong>Strength: </strong>
+                    <i className={strength[0]}></i>
+                    <i className={strength[1]}></i>
+                    <i className={strength[2]}></i>
+                    <i className={strength[3]}></i>
+                    <i className={strength[4]}></i>
                 </p>
                 <div className="columns">
                     <div className="column is-full">
                         <button className="button is-fullwidth fight-button">
-                            <strong>FIGHT</strong>
+                            <strong>ACTIVATE</strong>
                         </button>
                     </div>
                 </div>
@@ -78,4 +78,4 @@ const EnemyCard = (props) => {
     )
 }
 
-export default EnemyCard
+export default AbilityCardMinimal
