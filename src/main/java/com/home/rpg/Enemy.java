@@ -4,9 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Enemy {
@@ -20,6 +25,13 @@ public class Enemy {
     // https://jakarta.ee/specifications/persistence/2.2/apidocs/javax/persistence/column
     @Column(length=8160)
 	private String description; // description of real world challenge
+
+    // https://www.baeldung.com/jpa-hibernate-associations
+    @ManyToMany
+    @JoinTable(name = "enemy_ability",
+        joinColumns = @JoinColumn(name = "enemy_id"),
+        inverseJoinColumns = @JoinColumn(name = "ability_id"))
+    private List<Ability> abilities;
 
 	public Enemy() {}
 
@@ -77,6 +89,13 @@ public class Enemy {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    // Enemy will handle adding abilities and enemies to each other
+    public void addAbility(Ability ability) { // argument received in a POST request
+        ability.addEnemy(this);
+        this.abilities.add(ability);
+        // bidirectional many-to-many relationship, so they should have each other
     }
 
 	@Override

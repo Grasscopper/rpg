@@ -4,9 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+import jakarta.persistence.ManyToMany;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Ability {
@@ -19,6 +22,10 @@ public class Ability {
     // https://jakarta.ee/specifications/persistence/2.2/apidocs/javax/persistence/column
     @Column(length=8160)
 	private String description; // description of skill
+
+    // https://www.baeldung.com/jpa-hibernate-associations
+    @ManyToMany(mappedBy = "abilities")
+    private List<Enemy> enemies;
 
     public Ability() {}
 
@@ -76,6 +83,11 @@ public class Ability {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    // Ability never directly calls addEnemy; instead, Enemy calls this method
+    public void addEnemy(Enemy enemy) {
+        this.enemies.add(enemy);
     }
 
     @Override
