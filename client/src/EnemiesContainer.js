@@ -65,9 +65,6 @@ const EnemiesContainer = (props) => {
                 <p className="title is-1">
                   Enemies
                 </p>
-                <p className="subtitle" style={{ paddingBottom: 10 }}>
-                  My Real Life Problems
-                </p>
                 </div>
             </div>
             <div className="column is-4" />
@@ -75,7 +72,7 @@ const EnemiesContainer = (props) => {
             <div className="column is-5" />
             <div className="column is-2">
               <div className="container has-text-centered">
-                <button className="create button is-fullwidth has-text-weight-bold"
+                <button className="create button is-medium is-fullwidth has-text-weight-bold"
                 onClick={openEnemyForm}>
                   Create Enemy
                 </button>
