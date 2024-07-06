@@ -14,9 +14,15 @@ code {
     monospace;
 }
 
+.fight-button {
+  cursor: pointer;
+}
+
 .fight-button:hover {
   background-color: #04D1B2;
   color: white;
+  border: solid;
+  border-color: black;
 }
 
 .card-expansion:hover {

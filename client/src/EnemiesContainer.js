@@ -58,7 +58,6 @@ const EnemiesContainer = (props) => {
 
     return (
         <>
-            <div className="column is-full" />
             <div className="column is-4" />
             <div className="column is-4 has-text-centered">
               <div>

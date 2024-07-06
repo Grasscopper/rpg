@@ -28,6 +28,10 @@ const EnemyCard = (props) => {
         // }
     }
 
+    const addAbility = (event) => {
+        event.preventDefault()
+    }
+
     let card = <>
     <EnemyEditForm
         edit={edit}
@@ -70,15 +74,11 @@ const EnemyCard = (props) => {
                         <i className={difficulty[3]}></i>
                         <i className={difficulty[4]}></i>
                     </p>
-                    <div className="columns">
-                        <div className="column is-full">
-                            <button className="button is-fullwidth fight-button">
-                                <strong>FIGHT</strong>
-                            </button>
-                        </div>
-                    </div>
                     <div className="content">{props.description}</div>
                 </div>
+            </div>
+            <div className="card-content has-text-centered fight-button" style={{ border: "solid" }}>
+                <p className="title"><strong>FIGHT</strong></p>
             </div>
         </div>
     </div>
@@ -120,12 +120,14 @@ const EnemyCard = (props) => {
                         <i className={difficulty[3]}></i>
                         <i className={difficulty[4]}></i>
                     </p>
-                    <div className="columns">
-                        <div className="column is-full">
-                            <button className="button is-fullwidth fight-button">
-                                <strong>FIGHT</strong>
-                            </button>
-                        </div>
+                </div>
+            </div>
+            <div className="card-content">
+                <div className="columns">
+                    <div className="column is-full">
+                        <button className="button is-fullwidth fight-button" onClick={addAbility}>
+                            <strong>FIGHT</strong>
+                        </button>
                     </div>
                 </div>
             </div>

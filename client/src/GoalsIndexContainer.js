@@ -108,8 +108,8 @@ const GoalsIndexContainer = (props) => {
           </nav>
 
             <div className="columns is-multiline" style={{ margin: 5 }}>
-              <AbilitiesContainer />
               <EnemiesContainer />
+              <AbilitiesContainer />
             </div>
 
             <br />
