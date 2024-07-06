@@ -174,7 +174,7 @@ const AbilityForm = (props) => {
 
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button has-text-weight-bold has-text-white" style={{ backgroundColor: "#66D1FF", border: "none"}}
+                    <button className="button has-text-weight-bold has-text-white" style={{ backgroundColor: "#66D1FF", border: "solid", borderColor: "#363636"}}
                         onClick={sendAbilityForm}>CREATE
                     </button>
 

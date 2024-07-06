@@ -26,7 +26,6 @@ const AbilityCard = (props) => {
         // if (edit === "not-active") {
         setOpen(!open)
         // }
-        // console.log(open)
     }
 
     let card = <>
