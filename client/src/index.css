@@ -32,6 +32,20 @@ code {
   background-color: #EBFFFC;
 }
 
+#selected-ability-to-add {
+  cursor: pointer;
+  border: solid;
+  border-width: 2px;
+  border-color: transparent;
+}
+
+#selected-ability-to-add:hover {
+  background-color: #EBFFFC;
+  border: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
 /* the pencil 'edit' icon */
 .card-header-icon:hover { 
   color: black;

@@ -49,6 +49,7 @@ const EnemyCard = (props) => {
         difficulty={props.difficulty}
         title={props.title}
         url={props.url}
+        abilities={props.abilities}
         enemies={props.enemies}
         setEnemies={props.setEnemies}
     />
@@ -120,6 +121,7 @@ const EnemyCard = (props) => {
         difficulty={props.difficulty}
         title={props.title}
         url={props.url}
+        abilities={props.abilities}
         enemies={props.enemies}
         setEnemies={props.setEnemies}
     />

@@ -50,6 +50,7 @@ const EnemiesContainer = (props) => {
             title={enemy.title}
             difficulty={enemy.difficulty}
             description={enemy.description}
+            abilities={props.abilities}
             enemies={enemies}
             setEnemies={setEnemies}
             />
