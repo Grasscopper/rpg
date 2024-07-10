@@ -1,15 +1,22 @@
 import React, {useState} from 'react'
+import AddAbilityForm from './AddAbilityForm'
 import EnemyEditForm from './EnemyEditForm'
 
 const EnemyCard = (props) => {
-    const [edit, setEditForm] = useState("not-active")
     const [open, setOpen] = useState(false)
+    const [add, setAddForm] = useState("not-active")
+    const [edit, setEditForm] = useState("not-active")
 
     let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
     if (props.difficulty > 1) difficulty[1] = "fas fa-star"
     if (props.difficulty > 2) difficulty[2] = "fas fa-star"
     if (props.difficulty > 3) difficulty[3] = "fas fa-star"
     if (props.difficulty > 4) difficulty[4] = "fas fa-star"
+
+    const expand = (event) => {
+        event.preventDefault()
+        setOpen(!open)
+    }
 
     const editEnemy = (event) => {
         event.preventDefault()
@@ -21,18 +28,31 @@ const EnemyCard = (props) => {
         }
     }
 
-    const expand = (event) => {
-        event.preventDefault()
-        // if (edit === "not-active") {
-        setOpen(!open)
-        // }
-    }
-
     const addAbility = (event) => {
         event.preventDefault()
+        if (add === "not-active") {
+            setAddForm("is-active")
+        }
+        else if (add === "is-active") {
+            setAddForm("not-active")
+        }
     }
 
+    // big card
     let card = <>
+    <AddAbilityForm
+        add={add}
+        setAddForm={setAddForm}
+        id={props.id}
+        name={props.name}
+        description={props.description}
+        difficulty={props.difficulty}
+        title={props.title}
+        url={props.url}
+        abilities={props.abilities}
+        enemies={props.enemies}
+        setEnemies={props.setEnemies}
+    />
     <EnemyEditForm
         edit={edit}
         setEditForm={setEditForm}
@@ -65,7 +85,7 @@ const EnemyCard = (props) => {
                     </figure>
                 </div>
 
-                <div className="card-content">
+                <div className="card-content" style={{ borderBottom: "solid", borderRadius: 0}}>
                     <p className="title">{props.title}</p>
                     <p className="subtitle"><strong>Difficulty: </strong>
                         <i className={difficulty[0]}></i>
@@ -77,15 +97,34 @@ const EnemyCard = (props) => {
                     <div className="content">{props.description}</div>
                 </div>
             </div>
-            <div className="card-content has-text-centered fight-button" style={{ border: "solid" }}>
-                <p className="title"><strong>FIGHT</strong></p>
+            <div className="card-content">
+                <div className="columns">
+                    <div className="column is-full">
+                        <button className="button is-fullwidth fight-button" onClick={addAbility}>
+                            <strong>FIGHT</strong>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     </>
 
-    if (open == false) {
+    if (open == false) { // small card; not opened
     card = <>
+    <AddAbilityForm
+        add={add}
+        setAddForm={setAddForm}
+        id={props.id}
+        name={props.name}
+        description={props.description}
+        difficulty={props.difficulty}
+        title={props.title}
+        url={props.url}
+        abilities={props.abilities}
+        enemies={props.enemies}
+        setEnemies={props.setEnemies}
+    />
     <EnemyEditForm
         edit={edit}
         setEditForm={setEditForm}
@@ -111,7 +150,7 @@ const EnemyCard = (props) => {
                 </span>
             </header>
             <div className="card-expansion" onClick={expand}>
-                <div className="card-content">
+                <div className="card-content" style={{ borderBottom: "solid", borderRadius: 0}}>
                     <p className="title">{props.title}</p>
                     <p className="subtitle"><strong>Difficulty: </strong>
                         <i className={difficulty[0]}></i>
