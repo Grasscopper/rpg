@@ -70,13 +70,6 @@ const AbilityCard = (props) => {
                         <i className={strength[3]}></i>
                         <i className={strength[4]}></i>
                     </p>
-                    <div className="columns">
-                        <div className="column is-full">
-                            <button className="button is-fullwidth fight-button">
-                                <strong>ACTIVATE</strong>
-                            </button>
-                        </div>
-                    </div>
                     <div className="content">{props.description}</div>
                 </div>
             </div>
@@ -130,3 +123,11 @@ const AbilityCard = (props) => {
 }
 
 export default AbilityCard
+
+{/* <div className="columns">
+<div className="column is-full">
+    <button className="button is-fullwidth fight-button">
+        <strong>ACTIVATE</strong>
+    </button>
+</div>
+</div> */}

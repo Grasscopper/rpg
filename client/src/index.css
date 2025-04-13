@@ -13,10 +13,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+/* 
 .fight-button {
   cursor: pointer;
-}
+} */
 
 .fight-button:hover {
   background-color: #04D1B2;
@@ -33,7 +33,7 @@ code {
 }
 
 #selected-ability-to-add {
-  cursor: pointer;
+  /* cursor: pointer; */
   border: solid;
   border-width: 2px;
   border-color: transparent;
@@ -45,6 +45,10 @@ code {
   border-width: 2px;
   border-color: black;
 }
+
+/* .card-hover:hover {
+  cursor: pointer;
+} */
 
 /* the pencil 'edit' icon */
 .card-header-icon:hover { 

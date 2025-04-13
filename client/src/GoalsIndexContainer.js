@@ -53,26 +53,6 @@ const GoalsIndexContainer = (props) => {
                 <a className="navbar-item">
                   Abilities
                 </a>
-
-                <a className="navbar-item">
-                  Rewards
-                </a>
-              </div>
-
-              <div className="navbar-end">
-                <div className="navbar-item">
-                  <div className="buttons">
-                    <a className="button is-info">
-                      <strong>Sign Up</strong>
-                    </a>
-                    <a className="button is-info is-inverted">
-                      <span className="icon">
-                        <i className="fas fa-user"></i>
-                      </span>
-                      <span>Login</span>
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
           </nav>

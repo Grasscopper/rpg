@@ -85,7 +85,7 @@ const EnemyCard = (props) => {
                     </figure>
                 </div>
 
-                <div className="card-content" style={{ borderBottom: "solid", borderRadius: 0}}>
+                <div className="card-content card-hover" style={{ borderRadius: 0}}>
                     <p className="title">{props.title}</p>
                     <p className="subtitle"><strong>Difficulty: </strong>
                         <i className={difficulty[0]}></i>
@@ -150,7 +150,7 @@ const EnemyCard = (props) => {
                 </span>
             </header>
             <div className="card-expansion" onClick={expand}>
-                <div className="card-content" style={{ borderBottom: "solid", borderRadius: 0}}>
+                <div className="card-content card-hover" style={{ borderRadius: 0}}>
                     <p className="title">{props.title}</p>
                     <p className="subtitle"><strong>Difficulty: </strong>
                         <i className={difficulty[0]}></i>
