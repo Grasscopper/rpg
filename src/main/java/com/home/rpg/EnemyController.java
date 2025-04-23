@@ -7,18 +7,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.LinkedList;
 
 import com.home.rpg.Enemy;
+import com.home.rpg.Ability;
+import com.home.rpg.AbilityRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class EnemyController {
 	private final EnemyRepository repository;
+	private final AbilityRepository abilityRepository;
 
-	public EnemyController(EnemyRepository repository) {
+	@Autowired // Annotation needed to access AbilityRepository
+	public EnemyController(EnemyRepository repository, AbilityRepository abilityRepository) {
 		this.repository = repository;
+		this.abilityRepository = abilityRepository;
   	}
 
 	@RequestMapping(value = "/api/enemies", method = RequestMethod.GET)
@@ -53,6 +59,34 @@ public class EnemyController {
 				newEnemy.setId(id);
         		return repository.save(newEnemy);
       		});
+	}
+
+	// new
+	@RequestMapping(value = "/api/enemies/{enemyId}/{abilityId}", method = RequestMethod.PUT)
+	@ResponseBody
+	public Enemy addAbilityToEnemy(@RequestBody Enemy foundEnemy, @PathVariable Integer enemyId, @PathVariable Integer abilityId) {
+		Enemy enemy = repository.findById(enemyId.longValue()).orElseThrow();
+		Ability ability = abilityRepository.findById(abilityId.longValue()).orElseThrow();
+		// enemy.addAbility(ability);
+		enemy.addAbility(ability);
+		return repository.save(enemy);
+
+		// foundEnemy.addAbility(ability);
+		// repository.save(enemy);
+		// System.out.println("WORKED UP TO HERE");
+		// repository.save(enemy);
+		// System.out.println("CHECK BELOW:");
+		// System.out.printf("%s\n", enemy.getAbilities())
+		// for (Ability ab : enemy.getAbilities()) {
+			// System.out.printf("%s\n", ab.getRealName());
+		// }
+
+		// System.out.printf("Payload: %s\n", foundEnemy);
+		// System.out.printf("Enemy ID: %s\n", enemyId);
+		// System.out.printf("Ability ID: %s\n", abilityId);
+		// Enemy enemy = new Enemy("A", "B", "C", 5, "D");
+		// repository.save(enemy);
+		// return repository.save(foundEnemy);
 	}
 
 	@RequestMapping(value = "/api/enemies/{id}", method = RequestMethod.DELETE)

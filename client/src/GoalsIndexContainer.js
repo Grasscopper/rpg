@@ -19,10 +19,10 @@ const GoalsIndexContainer = (props) => {
           }
       })
       .then((response) => {
-          return response.json()
+        return response.json()
       })
       .then((body) => {
-          setAbilities(body)
+        setAbilities(body)
       })
       .catch((error) => {
           console.error(`Cannot fetch abilities (coping skills): ${error.message}`)

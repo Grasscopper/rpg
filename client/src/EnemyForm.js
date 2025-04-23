@@ -6,7 +6,8 @@ const EnemyForm = (props) => {
         description: "",
         difficulty: 1,
         title: "",
-        url: ""
+        url: "",
+        abilities: []
       })
     let [previous, setPrevious] = useState(1)
 
