@@ -7,11 +7,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 public class Enemy {
@@ -31,7 +34,7 @@ public class Enemy {
     @JoinTable(name = "enemy_ability",
         joinColumns = @JoinColumn(name = "enemy_id"),
         inverseJoinColumns = @JoinColumn(name = "ability_id"))
-    private List<Ability> abilities;
+    private Set<Ability> abilities = new HashSet<>();
 
 	public Enemy() {}
 
@@ -91,11 +94,18 @@ public class Enemy {
         this.description = description;
     }
 
-    // Enemy will handle adding abilities and enemies to each other
-    public void addAbility(Ability ability) { // argument received in a POST request
-        ability.addEnemy(this);
+    public Set<Ability> getAbilities() {
+        return abilities;
+    }
+
+    public void addAbility(Ability ability) {
         this.abilities.add(ability);
-        // bidirectional many-to-many relationship, so they should have each other
+        ability.getEnemies().add(this);
+    }
+
+    public void removeAbility(Ability ability) {
+            this.abilities.remove(ability);
+            ability.getEnemies().remove(this);
     }
 
 	@Override

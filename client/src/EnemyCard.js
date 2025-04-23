@@ -6,6 +6,7 @@ const EnemyCard = (props) => {
     const [open, setOpen] = useState(false)
     const [add, setAddForm] = useState("not-active")
     const [edit, setEditForm] = useState("not-active")
+    const [abilities, setAbilities] = useState([])
 
     let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
     if (props.difficulty > 1) difficulty[1] = "fas fa-star"
@@ -36,6 +37,27 @@ const EnemyCard = (props) => {
         else if (add === "is-active") {
             setAddForm("not-active")
         }
+        event.preventDefault()
+        fetch("http://localhost:8080/api/abilities")
+        .then((response) => {
+            if (response.ok) {
+                return response
+            }
+            else {
+                let errorMessage = `${response.status}: ${response.statusTest}`
+                let error = new Error(errorMessage)
+                throw(error)
+            }
+        })
+        .then((response) => {
+          return response.json()
+        })
+        .then((body) => {
+          setAbilities(body)
+        })
+        .catch((error) => {
+            console.error(`Cannot fetch abilities (coping skills): ${error.message}`)
+        })
     }
 
     // big card
@@ -49,7 +71,7 @@ const EnemyCard = (props) => {
         difficulty={props.difficulty}
         title={props.title}
         url={props.url}
-        abilities={props.abilities}
+        abilities={abilities}
         enemies={props.enemies}
         setEnemies={props.setEnemies}
     />
@@ -102,6 +124,11 @@ const EnemyCard = (props) => {
                     <div className="column is-full">
                         <button className="button is-fullwidth fight-button" onClick={addAbility}>
                             <strong>FIGHT</strong>
+                        </button>
+                        <button className="button is-fullwidth fight-button"
+                        style={{marginTop: 10}}
+                        onClick={addAbility}>
+                            <strong>SKILLS</strong>
                         </button>
                     </div>
                 </div>
@@ -164,8 +191,13 @@ const EnemyCard = (props) => {
             <div className="card-content">
                 <div className="columns">
                     <div className="column is-full">
-                        <button className="button is-fullwidth fight-button" onClick={addAbility}>
-                            <strong>FIGHT</strong>
+                        <button className="button is-fullwidth fight-button">
+                            <strong>BATTLE</strong>
+                        </button>
+                        <button className="button is-fullwidth fight-button"
+                        style={{marginTop: 10}}
+                        onClick={addAbility}>
+                            <strong>SKILLS</strong>
                         </button>
                     </div>
                 </div>

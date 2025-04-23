@@ -5,11 +5,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 public class Ability {
@@ -25,7 +28,8 @@ public class Ability {
 
     // https://www.baeldung.com/jpa-hibernate-associations
     @ManyToMany(mappedBy = "abilities")
-    private List<Enemy> enemies;
+    @JsonIgnore
+    private Set<Enemy> enemies = new HashSet<>();
 
     public Ability() {}
 
@@ -85,9 +89,8 @@ public class Ability {
         this.description = description;
     }
 
-    // Ability never directly calls addEnemy; instead, Enemy calls this method
-    public void addEnemy(Enemy enemy) {
-        this.enemies.add(enemy);
+    public Set<Enemy> getEnemies() {
+        return enemies;
     }
 
     @Override
