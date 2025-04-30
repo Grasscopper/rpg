@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import AddAbilityForm from './AddAbilityForm'
 import EnemyEditForm from './EnemyEditForm'
+import EnemyBattle from './EnemyBattle'
 
 const EnemyCard = (props) => {
     const [open, setOpen] = useState(false)
     const [add, setAddForm] = useState("not-active")
     const [edit, setEditForm] = useState("not-active")
     const [abilities, setAbilities] = useState([])
+    const [battleModal, setBattleModal] = useState("not-active")
+    const [enemy, setEnemy] = useState({})
 
     let difficulty = ["fas fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]
     if (props.difficulty > 1) difficulty[1] = "fas fa-star"
@@ -29,6 +32,36 @@ const EnemyCard = (props) => {
         }
     }
 
+    const showAbilities = (event) => {
+        event.preventDefault()
+        if (battleModal === "not-active") {
+            setBattleModal("is-active")
+        }
+        else if (battleModal === "is-active") {
+            setBattleModal("not-active")
+        }
+        fetch(`http://localhost:8080/api/enemies/${props.id}`)
+        .then((response) => {
+            if (response.ok) {
+                return response
+            }
+            else {
+                let errorMessage = `${response.status}: ${response.statusTest}`
+                let error = new Error(errorMessage)
+                throw(error)
+            }
+        })
+        .then((response) => {
+          return response.json()
+        })
+        .then((foundEnemy) => {
+            setEnemy(foundEnemy)
+        })
+        .catch((error) => {
+            console.error(`Cannot fetch enemy (life problems): ${error.message}`)
+        })
+    }
+
     const addAbility = (event) => {
         event.preventDefault()
         if (add === "not-active") {
@@ -37,7 +70,6 @@ const EnemyCard = (props) => {
         else if (add === "is-active") {
             setAddForm("not-active")
         }
-        event.preventDefault()
         fetch("http://localhost:8080/api/abilities")
         .then((response) => {
             if (response.ok) {
@@ -87,6 +119,13 @@ const EnemyCard = (props) => {
         enemies={props.enemies}
         setEnemies={props.setEnemies}
     />
+    <EnemyBattle
+    battleModal={battleModal}
+    setBattleModal={setBattleModal}
+    enemy={enemy}
+    abilities={abilities}
+    strength={props.difficulty}
+    />
     <div className="column is-3">
         <div className="card" >
             <header className="card-header has-background-primary has-text-white">
@@ -122,8 +161,9 @@ const EnemyCard = (props) => {
             <div className="card-content">
                 <div className="columns">
                     <div className="column is-full">
-                        <button className="button is-fullwidth fight-button" onClick={addAbility}>
-                            <strong>FIGHT</strong>
+                        <button className="button is-fullwidth fight-button"
+                        onClick={showAbilities}>
+                            <strong>BATTLE</strong>
                         </button>
                         <button className="button is-fullwidth fight-button"
                         style={{marginTop: 10}}
@@ -164,6 +204,13 @@ const EnemyCard = (props) => {
         enemies={props.enemies}
         setEnemies={props.setEnemies}
     />
+    <EnemyBattle
+    battleModal={battleModal}
+    setBattleModal={setBattleModal}
+    enemy={enemy}
+    abilities={abilities}
+    difficulty={props.difficulty}
+    />
     <div className="column is-3">
         <div className="card" >
             <header className="card-header has-background-primary has-text-white">
@@ -191,7 +238,8 @@ const EnemyCard = (props) => {
             <div className="card-content">
                 <div className="columns">
                     <div className="column is-full">
-                        <button className="button is-fullwidth fight-button">
+                        <button className="button is-fullwidth fight-button"
+                        onClick={showAbilities}>
                             <strong>BATTLE</strong>
                         </button>
                         <button className="button is-fullwidth fight-button"

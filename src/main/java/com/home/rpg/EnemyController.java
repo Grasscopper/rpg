@@ -36,6 +36,12 @@ public class EnemyController {
 		return list;
 	}
 
+	@RequestMapping(value = "/api/enemies/{id}", method = RequestMethod.GET)
+	public Enemy getEnemy(@PathVariable Integer id) {
+		Enemy enemy = repository.findById(id.longValue()).orElseThrow();
+		return enemy;
+	}
+
 	@RequestMapping(value = "/api/enemies", method = RequestMethod.POST)
 	@ResponseBody
 	public Enemy createEnemy(@RequestBody Enemy enemy) { // JSON to an Enemy object
