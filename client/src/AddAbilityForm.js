@@ -21,6 +21,7 @@ const AddAbilityForm = (props) => {
         //     enemy: foundEnemy,
         //     ability: foundAbility
         // }
+        // debugger
         fetch(`http://localhost:8080/api/enemies/${enemyId}/${abilityId}`, {
             method: "PUT",
             body: JSON.stringify(foundEnemy),
@@ -41,8 +42,14 @@ const AddAbilityForm = (props) => {
             .then((response) => {
                 return response.json()
             })
-            .then((enemy) => {
-                debugger
+            .then((enemyWithAddedAbility) => {
+                const newEnemies = props.enemies.map((enemy) => {
+                    if (enemy.id == enemyWithAddedAbility.id) {
+                        enemy = enemyWithAddedAbility
+                    }
+                    return enemy
+                })
+                props.setEnemies(newEnemies)
             })
             .catch((error) => {
             console.error(`Error adding ability: ${error.message}`)
@@ -58,7 +65,7 @@ const AddAbilityForm = (props) => {
     const abilityTiles = props.abilities.map((ability) => {
         return (
             <div className="column is-full" key={ability.id}>
-                <div id={`${props.id} ${ability.id}`} className="card" onClick={addAbility}>
+                <div id={`${props.id} ${ability.id}`} className="card">
                     <header className="card-header has-background-primary has-text-white">
                         <p className="card-header-title has-text-white">
                         {ability.realName}
@@ -74,6 +81,16 @@ const AddAbilityForm = (props) => {
                         <i className={strength[4]}></i>
                         </p>
                         <p>{ability.description}</p>
+                        <div className="columns">
+                            <div className="column is-full">
+                                <button id={`${props.id} ${ability.id}`}
+                                className="button is-fullwidth fight-button"
+                                onClick={addAbility}
+                                style={{ marginTop: 10 }}>
+                                    <strong>USE</strong>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
